@@ -60,10 +60,17 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+
     try {
       await emailjs.send(
         'service_3jrhs9n', 
         'template_mddzlxo', 
+        formData, 
+        'UyfXHNf05oiiYP14t'
+      );
+      await emailjs.send(
+        'service_3jrhs9n', 
+        'template_df8fxg4', 
         formData, 
         'UyfXHNf05oiiYP14t'
       );
