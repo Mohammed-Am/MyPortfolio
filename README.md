@@ -1,10 +1,24 @@
+<<<<<<< HEAD
+=======
+# MyPortfolio
+
+=======
+>>>>>>> fa34afc (Initial commit)
 To run the application:
 
 1.  **Start the backend server:**
     Open a new terminal, navigate to the `event-reminder-backend` directory, and run:
+<<<<<<< HEAD
     ```bash
     node server.js
     ```
+=======
+
+    ```bash
+    node server.js
+    ```
+
+>>>>>>> fa34afc (Initial commit)
     You should see `Server running on port 5000`.
 
 2.  **Start the frontend application:**
@@ -16,10 +30,18 @@ To run the application:
 
 **Functionality:**
 
+<<<<<<< HEAD
 *   You can view a list of dummy events on the homepage.
 *   Click "Add New Event" to create a new event. You can add multiple guests with their names and WhatsApp numbers.
 *   When you create an event, a mock WhatsApp message will be logged in the backend terminal for each guest.
 *   You can edit existing events by clicking the edit icon.
 *   You can delete events by clicking the delete icon.
+=======
+- You can view a list of dummy events on the homepage.
+- Click "Add New Event" to create a new event. You can add multiple guests with their names and WhatsApp numbers.
+- When you create an event, a mock WhatsApp message will be logged in the backend terminal for each guest.
+- You can edit existing events by clicking the edit icon.
+- You can delete events by clicking the delete icon.
+>>>>>>> fa34afc (Initial commit)
 
 This setup demonstrates the core functionality and API integration. The WhatsApp messaging is currently mocked, but the structure is in place for integration with the real 1CONFIRMED API.
