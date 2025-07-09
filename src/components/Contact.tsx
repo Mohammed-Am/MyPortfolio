@@ -68,6 +68,13 @@ const Contact: React.FC = () => {
         formData, 
         'UyfXHNf05oiiYP14t'
       );
+         // Email to you (notification)
+      await emailjs.send(
+          'service_3jrhs9n',
+           'template_df8fxg4', // Assuming this is your notification template
+          formData,
+           'UyfXHNf05oiiYP14t'
+         );
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
