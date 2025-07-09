@@ -64,13 +64,7 @@ const Contact: React.FC = () => {
     try {
       await emailjs.send(
         'service_3jrhs9n', 
-        'template_69xxgii', 
-        formData, 
-        'UyfXHNf05oiiYP14t'
-      );
-      await emailjs.send(
-        'service_3jrhs9n', 
-        'template_df8fxg4', 
+        'template_mddzlxo', 
         formData, 
         'UyfXHNf05oiiYP14t'
       );
