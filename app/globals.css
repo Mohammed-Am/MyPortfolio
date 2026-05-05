@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --accent: #10B981;
+  --accent-blue: #3B82F6;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-[#111]; }
+::-webkit-scrollbar-thumb { @apply bg-emerald-500 rounded-sm; }
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.dark .dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.dark-dot-grid {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.dark .dark-dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #10B981, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+}
+.dark .glow {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+/* Card styles */
+.glass-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+/* Skill bar animation */
+@keyframes fillBar {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+.skill-bar-fill {
+  animation: fillBar 1.2s ease-out forwards;
+}
+
+/* Section fade-in */
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Wave hand */
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  15%       { transform: rotate(18deg); }
+  30%       { transform: rotate(-8deg); }
+  45%       { transform: rotate(18deg); }
+  60%       { transform: rotate(-4deg); }
+  75%       { transform: rotate(12deg); }
+}
+
+.wave-emoji {
+  display: inline-block;
+  transform-origin: 70% 80%;
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Modal Animations */
+.animate-in {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.zoom-in-95 {
+  animation-name: zoomIn95;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn95 {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Orbit Animation */
+@keyframes orbit {
+  from { 
+    transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); 
+  }
+}
+
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: orbit var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@media (max-width: 640px) {
+  .outer-orbit { --radius: 120px; }
+  .inner-orbit { --radius: 80px; }
+}
+@media (min-width: 641px) {
+  .outer-orbit { --radius: 190px; }
+  .inner-orbit { --radius: 130px; }
+}
