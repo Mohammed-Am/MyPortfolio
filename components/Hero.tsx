@@ -5,7 +5,7 @@ import { Exo_2 } from 'next/font/google'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
-const roles = ['Web Designer', 'Web Developer', 'Web Designer and Developer']
+const roles = ['Full-Stack Web Developer', 'Building AI Workflows & Automations']
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -62,13 +62,6 @@ export default function Hero() {
           <h1 className={`${exo2.className} text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight transition-colors duration-300`}>
             Mohammed
           </h1>
-
-          {/* Subtitle badge */}
-          <p className={`${exo2.className} text-sm sm:text-base font-semibold text-gray-600 dark:text-gray-300 tracking-wide`}>
-            <span className="text-emerald-500 dark:text-emerald-400">Full-Stack Web Developer</span>
-            <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
-            Building AI Workflows &amp; Automations
-          </p>
 
           {/* Typing animation */}
           <div className="h-8 sm:h-10 flex items-center justify-center">
