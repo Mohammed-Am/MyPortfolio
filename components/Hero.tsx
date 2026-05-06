@@ -63,6 +63,13 @@ export default function Hero() {
             Mohammed
           </h1>
 
+          {/* Subtitle badge */}
+          <p className={`${exo2.className} text-sm sm:text-base font-semibold text-gray-600 dark:text-gray-300 tracking-wide`}>
+            <span className="text-emerald-500 dark:text-emerald-400">Full-Stack Web Developer</span>
+            <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
+            Building AI Workflows &amp; Automations
+          </p>
+
           {/* Typing animation */}
           <div className="h-8 sm:h-10 flex items-center justify-center">
             <span className={`${exo2.className} text-lg sm:text-2xl font-semibold text-emerald-400 tracking-wide`}>
