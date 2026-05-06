@@ -132,31 +132,29 @@ export default function Projects() {
                   key={item.title}
                   className="glass-card rounded-2xl overflow-hidden border border-emerald-500/10 dark:border-emerald-500/20 group transition-all duration-500 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] hover:-translate-y-1 flex flex-col"
                 >
-                  {/* Image Top */}
-                  <div
-                    className="relative h-[180px] sm:h-[220px] overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image flex-shrink-0"
-                    onClick={() => openPreview(filteredProjects.indexOf(item))}
-                  >
-                    {item.image ? (
-                      <div className="w-full h-full relative overflow-hidden">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-auto absolute top-0 left-0 animate-[pageScroll_8s_ease-in-out_infinite_alternate]"
-                          style={{ animationDelay: `${filteredProjects.indexOf(item) * 1.5}s` }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                        <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20">
-                          <div className="px-5 py-2.5 bg-black/70 backdrop-blur-xl text-white rounded-xl text-xs font-black border border-white/20">
-                            OPEN PREVIEW
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-5xl opacity-20">🌐</div>
-                      </div>
-                    )}
+                  {/* Live mini-browser preview */}
+                  <div className="relative h-[220px] sm:h-[260px] overflow-hidden bg-gray-950 flex-shrink-0 group/preview">
+                    {/* Scaled iframe */}
+                    <div
+                      className="absolute top-0 left-0 origin-top-left"
+                      style={{ width: '200%', height: '200%', transform: 'scale(0.5)' }}
+                    >
+                      <iframe
+                        src={item.live}
+                        className="w-full h-full border-none"
+                        title={item.title}
+                        loading="lazy"
+                      />
+                    </div>
+                    {/* Hover overlay — click to open full modal */}
+                    <div
+                      className="absolute inset-0 flex items-end justify-center pb-4 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 z-20 cursor-pointer bg-gradient-to-t from-black/60 via-transparent to-transparent"
+                      onClick={() => openPreview(filteredProjects.indexOf(item))}
+                    >
+                      <span className="px-4 py-2 bg-black/80 backdrop-blur-xl text-white rounded-xl text-xs font-black border border-white/20">
+                        ⛶ Open Full Preview
+                      </span>
+                    </div>
                   </div>
 
                   {/* Content Bottom */}
