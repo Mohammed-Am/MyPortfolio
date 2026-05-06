@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { projectsContent } from '@/data/content'
 
 export default function Projects() {
@@ -46,6 +46,17 @@ export default function Projects() {
     setPreviewIndex(next)
     setPreviewUrl(filteredProjects[next]?.live)
     setIsLoading(true)
+  }
+
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  const iframeBack    = () => iframeRef.current?.contentWindow?.history.back()
+  const iframeForward = () => iframeRef.current?.contentWindow?.history.forward()
+  const iframeRefresh = () => {
+    if (iframeRef.current) iframeRef.current.src = iframeRef.current.src
+  }
+  const iframeHome = () => {
+    if (iframeRef.current && previewUrl) iframeRef.current.src = previewUrl
   }
 
   const closePreview = () => {
@@ -232,13 +243,30 @@ export default function Projects() {
           <div className="relative w-full h-full sm:max-w-7xl sm:h-full bg-[#050a10] sm:rounded-[2.5rem] overflow-hidden flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-4 bg-[#0d1520] border-b border-white/5">
-              <div className="flex items-center gap-3 sm:gap-6">
-                <div className="hidden sm:flex gap-2.5">
+              <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                {/* Traffic lights */}
+                <div className="hidden sm:flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/40" />
                   <div className="w-3 h-3 rounded-full bg-amber-500/40" />
                   <div className="w-3 h-3 rounded-full bg-emerald-500/40" />
                 </div>
-                <div className="text-[10px] sm:text-xs text-gray-400 font-mono bg-black/40 px-3 py-1 rounded-lg border border-white/5 max-w-[150px] sm:max-w-xs truncate">
+                {/* Browser nav buttons */}
+                <div className="flex items-center gap-1">
+                  <button onClick={iframeBack} className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all" title="Back">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                  </button>
+                  <button onClick={iframeForward} className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all" title="Forward">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </button>
+                  <button onClick={iframeRefresh} className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all" title="Refresh">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                  </button>
+                  <button onClick={iframeHome} className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all" title="Home">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                  </button>
+                </div>
+                {/* URL bar */}
+                <div className="flex-1 text-[10px] sm:text-xs text-gray-400 font-mono bg-black/40 px-3 py-1.5 rounded-lg border border-white/5 truncate hidden sm:block">
                   {previewUrl}
                 </div>
               </div>
@@ -286,7 +314,13 @@ export default function Projects() {
                   <p className="text-gray-500 text-xs">Loading preview...</p>
                 </div>
               )}
-              <iframe src={previewUrl} className="w-full h-full border-none" onLoad={() => setIsLoading(false)} title="Project Live Preview" />
+              <iframe
+                ref={iframeRef}
+                src={previewUrl}
+                className="w-full h-full border-none"
+                onLoad={() => setIsLoading(false)}
+                title="Project Live Preview"
+              />
             </div>
           </div>
         </div>
