@@ -85,128 +85,99 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Featured Projects Section */}
         {activeTab === 'Web Development' && (
-          <div className="flex flex-col gap-10 sm:gap-24 mb-16 sm:mb-32">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-16">
             {filteredProjects.length === 0 ? (
-            <div className="text-center py-20 px-6 glass-card rounded-[2rem] sm:rounded-[3rem] border border-dashed border-emerald-500/20 dark:border-white/10 transition-all duration-500 hover:border-emerald-500/40">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
-                <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
+              <div className="col-span-2 text-center py-20 px-6 glass-card rounded-2xl border border-dashed border-emerald-500/20 dark:border-white/10">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Projects Cooking...</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-lg max-w-lg mx-auto leading-relaxed">
+                  I am currently finalizing my Web Development case studies. Check back soon!
+                </p>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">Projects Cooking...</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-lg max-w-lg mx-auto leading-relaxed">
-                I am currently finalizing my Web Development case studies and polishing the pixels. Check back soon!
-              </p>
-            </div>
-          ) : (
-            filteredProjects.map((item, index) => (
-            <div
-              key={item.title}
-              className="glass-card rounded-2xl overflow-hidden border border-emerald-500/10 dark:border-emerald-500/20 group transition-all duration-700 hover:shadow-[0_0_60px_rgba(16,185,129,0.1)]"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                {/* Content Side */}
-                <div className={`p-5 sm:p-8 lg:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-last border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-white/5' : 'border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-white/5'}`}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-wider border border-emerald-500/20">
+            ) : (
+              filteredProjects.map((item) => (
+                <div
+                  key={item.title}
+                  className="glass-card rounded-2xl overflow-hidden border border-emerald-500/10 dark:border-emerald-500/20 group transition-all duration-500 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] hover:-translate-y-1 flex flex-col"
+                >
+                  {/* Image Top */}
+                  <div
+                    className="relative h-[180px] sm:h-[220px] overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image flex-shrink-0"
+                    onClick={() => openPreview(item.live)}
+                  >
+                    {item.image ? (
+                      <div className="w-full h-full relative overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-auto absolute top-0 left-0 transition-transform duration-[5000ms] ease-linear group-hover/image:-translate-y-[calc(100%-220px)]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none group-hover/image:opacity-0 transition-opacity duration-500" />
+                        <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20">
+                          <div className="px-5 py-2.5 bg-black/70 backdrop-blur-xl text-white rounded-xl text-xs font-black border border-white/20">
+                            OPEN PREVIEW
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-5xl opacity-20">🌐</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content Bottom */}
+                  <div className="p-5 sm:p-6 flex flex-col flex-1">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-wider border border-emerald-500/20 w-fit mb-3">
                       {item.subtitle || item.badge}
                     </span>
-                  </div>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 dark:text-white mb-2 sm:mb-3 leading-tight tracking-tight">
-                    {item.title}
-                  </h3>
+                    <h3 className="text-lg sm:text-xl font-black text-gray-900 dark:text-white mb-2 leading-tight">
+                      {item.title}
+                    </h3>
 
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 sm:mb-5 text-sm font-light">
-                    {item.description}
-                  </p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed mb-4 flex-1">
+                      {item.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-6">
-                    {item.tech.map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-200/50 dark:border-emerald-500/10"
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {item.tech.map((tag: string) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-200/50 dark:border-emerald-500/10"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openPreview(item.live)}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-lg transition-all border border-emerald-200 dark:border-emerald-500/20"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <button
-                      onClick={() => openPreview(item.live)}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm font-bold rounded-xl transition-all border border-emerald-200 dark:border-emerald-500/20"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      Preview
-                    </button>
-                    <a
-                      href={item.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-bold rounded-xl transition-all shadow-md shadow-emerald-500/20"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      Live Site
-                    </a>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Preview
+                      </button>
+                      <a
+                        href={item.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold rounded-lg transition-all"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Live Site
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                {/* Image Side */}
-                <div
-                  className={`relative h-[200px] sm:h-[280px] lg:h-auto overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image`}
-                  onClick={() => openPreview(item.live)}
-                >
-                  {item.image ? (
-                    <div className="w-full h-full relative overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-auto absolute top-0 left-0 transition-transform duration-[6000ms] ease-linear group-hover/image:-translate-y-[calc(100%-280px)] sm:group-hover/image:-translate-y-[calc(100%-450px)] lg:group-hover/image:-translate-y-[calc(100%-600px)]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none group-hover/image:opacity-0 transition-opacity duration-500" />
-                      
-                      {/* Interactive Hint for Mobile */}
-                      <div className="absolute top-4 right-4 sm:hidden bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] font-bold text-white flex items-center gap-2">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                        TAP TO PREVIEW
-                      </div>
-
-                      {/* Desktop Hover Hint */}
-                      <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20">
-                        <div className="px-8 py-4 bg-black/70 backdrop-blur-2xl text-white rounded-2xl text-base font-black border border-white/20 shadow-2xl">
-                          OPEN INTERACTIVE PREVIEW
-                        </div>
-                      </div>
-                      
-                      {/* Scroll hint */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 group-hover/image:opacity-0 transition-opacity duration-300">
-                        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-white/80">Hover to Scroll</span>
-                        <div className="w-4 h-6 sm:w-5 sm:h-8 border-2 border-white/30 rounded-full flex justify-center p-1">
-                          <div className="w-0.5 h-1 sm:w-1 sm:h-1.5 bg-emerald-400 rounded-full animate-bounce" />
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-                      <div className="text-center p-8">
-                        <div className="text-6xl mb-4 opacity-20">🌐</div>
-                        <p className="text-emerald-600 dark:text-emerald-400 font-black text-xl">{item.title}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))
-          )}
+              ))
+            )}
           </div>
         )}
 
