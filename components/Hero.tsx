@@ -35,24 +35,24 @@ export default function Hero() {
   }, [displayed, typing, roleIndex])
 
   return (
-    <section id="hero" className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-center overflow-hidden bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300">
       <div id="about" className="absolute top-0" />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 pt-20 sm:pt-28 pb-14 sm:pb-24">
+      <div className="relative z-10 w-full px-4 sm:px-6 pt-16 sm:pt-28 pb-8 sm:pb-24">
         {/* Main Layout: Split Screen */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-12 lg:gap-8 w-full max-w-6xl mx-auto">
             
             {/* Left: Profile & Orbiting Tech Stack */}
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-              <div className="relative flex items-center justify-center w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] mx-auto lg:mx-0">
+              <div className="relative flex items-center justify-center w-[220px] h-[220px] sm:w-[450px] sm:h-[450px] mx-auto lg:mx-0">
                 
                 {/* Outer Orbit Track */}
-                <div className="absolute w-[280px] h-[280px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_40s_linear_infinite]" />
+                <div className="absolute w-[200px] h-[200px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_40s_linear_infinite]" />
                 {/* Inner Orbit Track */}
-                <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_30s_linear_infinite_reverse]" />
+                <div className="absolute w-[130px] h-[130px] sm:w-[280px] sm:h-[280px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_30s_linear_infinite_reverse]" />
 
                 {/* Profile image */}
-                <div className="relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)] z-10 bg-slate-100 dark:bg-gray-800">
+                <div className="relative w-20 h-20 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)] z-10 bg-slate-100 dark:bg-gray-800">
                   <Image
                     src="/profil.jpg"
                     alt="Mohammed Amouzoun"
