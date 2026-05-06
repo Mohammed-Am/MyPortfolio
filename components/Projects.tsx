@@ -104,7 +104,7 @@ export default function Projects() {
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-8 sm:mb-12">
-                    {item.tech.map((tag) => (
+                    {item.tech.map((tag: string) => (
                       <span
                         key={tag}
                         className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 text-[10px] sm:text-xs font-bold border border-emerald-200/50 dark:border-emerald-500/10"
@@ -190,9 +190,9 @@ export default function Projects() {
         </div>
 
         {/* Other Projects (Hidden if empty) */}
-        {projects.length > 0 && (
+        {(projects as any[]).length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {projects.map((project) => (
+            {(projects as any[]).map((project) => (
               <div key={project.title} className="glass-card rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 group">
                 <div className="h-48 sm:h-56 relative overflow-hidden cursor-pointer" onClick={() => project.live && openPreview(project.live)}>
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
