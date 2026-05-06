@@ -14,13 +14,13 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="fixed bottom-6 left-6 z-50 flex items-center gap-3 group"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-50 flex items-center gap-3 group flex-row-reverse sm:flex-row-reverse"
       aria-label="Chat on WhatsApp"
     >
       {/* Label - slides in on hover */}
       <span
-        className={`bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white text-xs sm:text-sm font-bold px-3 py-2 rounded-xl shadow-xl border border-gray-200 dark:border-white/10 transition-all duration-300 whitespace-nowrap ${
-          hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'
+        className={`bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white text-xs sm:text-sm font-bold px-3 py-2 rounded-xl shadow-xl border border-gray-200 dark:border-white/10 transition-all duration-300 whitespace-nowrap hidden sm:block ${
+          hovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
         }`}
       >
         Chat on WhatsApp
