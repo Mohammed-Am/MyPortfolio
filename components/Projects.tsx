@@ -5,6 +5,7 @@ import { projectsContent } from '@/data/content'
 export default function Projects() {
   const { featured, projects } = projectsContent
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [previewIndex, setPreviewIndex] = useState<number>(0)
   const [isLoading, setIsLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('Web Development')
 
@@ -22,8 +23,28 @@ export default function Projects() {
     }
   }, [previewUrl])
 
-  const openPreview = (url: string) => {
-    setPreviewUrl(url)
+  // Keyboard navigation
+  useEffect(() => {
+    if (!previewUrl) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') navigatePreview(1)
+      if (e.key === 'ArrowLeft') navigatePreview(-1)
+      if (e.key === 'Escape') closePreview()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [previewUrl, previewIndex, filteredProjects])
+
+  const openPreview = (index: number) => {
+    setPreviewIndex(index)
+    setPreviewUrl(filteredProjects[index]?.live)
+    setIsLoading(true)
+  }
+
+  const navigatePreview = (dir: number) => {
+    const next = (previewIndex + dir + filteredProjects.length) % filteredProjects.length
+    setPreviewIndex(next)
+    setPreviewUrl(filteredProjects[next]?.live)
     setIsLoading(true)
   }
 
@@ -103,16 +124,17 @@ export default function Projects() {
                   {/* Image Top */}
                   <div
                     className="relative h-[180px] sm:h-[220px] overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image flex-shrink-0"
-                    onClick={() => openPreview(item.live)}
+                    onClick={() => openPreview(filteredProjects.indexOf(item))}
                   >
                     {item.image ? (
                       <div className="w-full h-full relative overflow-hidden">
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-full h-auto absolute top-0 left-0 transition-transform duration-[5000ms] ease-linear group-hover/image:-translate-y-[calc(100%-220px)]"
+                          className="w-full h-auto absolute top-0 left-0 animate-[pageScroll_8s_ease-in-out_infinite_alternate]"
+                          style={{ animationDelay: `${filteredProjects.indexOf(item) * 1.5}s` }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none group-hover/image:opacity-0 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                         <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20">
                           <div className="px-5 py-2.5 bg-black/70 backdrop-blur-xl text-white rounded-xl text-xs font-black border border-white/20">
                             OPEN PREVIEW
@@ -153,7 +175,7 @@ export default function Projects() {
 
                     <div className="flex gap-2">
                       <button
-                        onClick={() => openPreview(item.live)}
+                        onClick={() => openPreview(filteredProjects.indexOf(item))}
                         className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-lg transition-all border border-emerald-200 dark:border-emerald-500/20"
                       >
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -203,30 +225,55 @@ export default function Projects() {
         )}
       </div>
 
-      {/* Live Preview Modal - MOBILE OPTIMIZED */}
       {previewUrl && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center sm:p-6 md:p-10">
-          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl animate-in fade-in duration-500" onClick={closePreview} />
-          
-          <div className="relative w-full h-full sm:max-w-7xl sm:h-full bg-[#050a10] sm:rounded-[2.5rem] overflow-hidden flex flex-col animate-in zoom-in-95 duration-500">
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={closePreview} />
+
+          <div className="relative w-full h-full sm:max-w-7xl sm:h-full bg-[#050a10] sm:rounded-[2.5rem] overflow-hidden flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-5 bg-[#0d1520] border-b border-white/5">
-              <div className="flex items-center gap-4 sm:gap-6">
+            <div className="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-4 bg-[#0d1520] border-b border-white/5">
+              <div className="flex items-center gap-3 sm:gap-6">
                 <div className="hidden sm:flex gap-2.5">
-                  <div className="w-3.5 h-3.5 rounded-full bg-red-500/40" />
-                  <div className="w-3.5 h-3.5 rounded-full bg-amber-500/40" />
-                  <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/40" />
+                  <div className="w-3 h-3 rounded-full bg-red-500/40" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/40" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/40" />
                 </div>
-                <div className="text-[10px] sm:text-xs text-gray-400 font-mono tracking-tight bg-black/40 px-3 py-1 rounded-lg border border-white/5 max-w-[150px] sm:max-w-none truncate">
+                <div className="text-[10px] sm:text-xs text-gray-400 font-mono bg-black/40 px-3 py-1 rounded-lg border border-white/5 max-w-[150px] sm:max-w-xs truncate">
                   {previewUrl}
                 </div>
               </div>
-              <div className="flex items-center gap-2 sm:gap-4">
-                <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 rounded-xl bg-white/5 text-gray-400">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              <div className="flex items-center gap-2 sm:gap-3">
+                {/* Prev / Counter / Next */}
+                {filteredProjects.length > 1 && (
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => navigatePreview(-1)}
+                      className="p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all"
+                      title="Previous project (←)"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono px-2">
+                      {previewIndex + 1} / {filteredProjects.length}
+                    </span>
+                    <button
+                      onClick={() => navigatePreview(1)}
+                      className="p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all"
+                      title="Next project (→)"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+                <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-white/5 text-gray-400 hover:text-white transition-all">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
-                <button onClick={closePreview} className="p-2 sm:p-3 rounded-xl bg-white/5 text-gray-400 hover:text-red-400">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                <button onClick={closePreview} className="p-2 rounded-xl bg-white/5 text-gray-400 hover:text-red-400 transition-all">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </div>
             </div>
@@ -235,7 +282,8 @@ export default function Projects() {
             <div className="relative flex-1 bg-white">
               {isLoading && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#050a10] z-10">
-                  <div className="w-12 h-12 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full animate-spin" />
+                  <div className="w-10 h-10 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full animate-spin mb-3" />
+                  <p className="text-gray-500 text-xs">Loading preview...</p>
                 </div>
               )}
               <iframe src={previewUrl} className="w-full h-full border-none" onLoad={() => setIsLoading(false)} title="Project Live Preview" />
