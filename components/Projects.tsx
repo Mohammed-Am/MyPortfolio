@@ -35,21 +35,60 @@ export default function Projects() {
     <section id="projects" className="py-12 sm:py-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-20">
-          <p className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-3">
+        <div className="text-center mb-8 sm:mb-12">
+          <p className="text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-[0.2em] uppercase mb-2">
             {projectsContent.subtitle}
           </p>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tighter">
+          <h2 className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tighter">
             {projectsContent.title}
           </h2>
-          <div className="w-12 sm:w-20 h-1.5 bg-emerald-500 mx-auto mt-6 rounded-full" />
+          <div className="w-10 h-1 bg-emerald-500 mx-auto mt-4 rounded-full" />
         </div>
 
-
+        {/* Tabs */}
+        <div className="flex justify-center mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 p-1.5 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10">
+            {['Web Development', 'AI Automation'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-5 py-2.5 sm:px-7 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                  activeTab === tab
+                    ? 'bg-white dark:bg-[#1A1A1A] text-emerald-600 dark:text-emerald-400 shadow-sm border border-gray-200/50 dark:border-white/5'
+                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
+                {tab === 'AI Automation' && (
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse align-middle" />
+                )}
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+        {/* AI Automation Coming Soon */}
+        {activeTab === 'AI Automation' && (
+          <div className="text-center py-16 px-6 glass-card rounded-[2rem] border border-dashed border-emerald-500/30 dark:border-emerald-500/20 mb-16">
+            <div className="relative w-20 h-20 mx-auto mb-6">
+              <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping" />
+              <div className="relative w-20 h-20 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                <svg className="w-9 h-9 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .3 2.7-1.1 2.7H3.9c-1.4 0-2.1-1.7-1.1-2.7L4.2 15.3" />
+                </svg>
+              </div>
+            </div>
+            <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-black uppercase tracking-widest border border-emerald-500/20 mb-4">Coming Soon</span>
+            <h3 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white mb-3">AI Automation Projects</h3>
+            <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+              I&apos;m currently finalizing my <span className="text-emerald-500 font-semibold">n8n workflows</span>, chatbot automations and Make.com integrations. Check back soon!
+            </p>
+          </div>
+        )}
 
         {/* Featured Projects Section */}
-        <div className="flex flex-col gap-10 sm:gap-24 mb-16 sm:mb-32">
-          {filteredProjects.length === 0 ? (
+        {activeTab === 'Web Development' && (
+          <div className="flex flex-col gap-10 sm:gap-24 mb-16 sm:mb-32">
+            {filteredProjects.length === 0 ? (
             <div className="text-center py-20 px-6 glass-card rounded-[2rem] sm:rounded-[3rem] border border-dashed border-emerald-500/20 dark:border-white/10 transition-all duration-500 hover:border-emerald-500/40">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
                 <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,51 +97,49 @@ export default function Projects() {
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">Projects Cooking...</h3>
               <p className="text-gray-600 dark:text-gray-400 text-lg max-w-lg mx-auto leading-relaxed">
-                {activeTab === 'AI Automation' 
-                  ? 'I am currently finalizing my n8n, Make, and chatbot automation workflows. Check back soon!'
-                  : `I am currently finalizing my ${activeTab} case studies and polishing the pixels. Check back soon!`}
+                I am currently finalizing my Web Development case studies and polishing the pixels. Check back soon!
               </p>
             </div>
           ) : (
             filteredProjects.map((item, index) => (
-            <div 
+            <div
               key={item.title}
-              className="glass-card rounded-[2rem] sm:rounded-[3rem] overflow-hidden border border-emerald-500/10 dark:border-emerald-500/20 group transition-all duration-700 hover:shadow-[0_0_100px_rgba(16,185,129,0.1)]"
+              className="glass-card rounded-2xl overflow-hidden border border-emerald-500/10 dark:border-emerald-500/20 group transition-all duration-700 hover:shadow-[0_0_60px_rgba(16,185,129,0.1)]"
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Content Side */}
-                <div className={`p-6 sm:p-12 lg:p-20 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-last border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-white/5' : 'border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-white/5'}`}>
-                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] sm:text-xs font-black uppercase tracking-wider border border-emerald-500/20">
+                <div className={`p-5 sm:p-8 lg:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-last border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-white/5' : 'border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-white/5'}`}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-wider border border-emerald-500/20">
                       {item.subtitle || item.badge}
                     </span>
                   </div>
-                  
-                  <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 dark:text-white mb-2 sm:mb-3 leading-tight tracking-tight">
                     {item.title}
                   </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 sm:mb-10 text-sm sm:text-lg lg:text-xl font-light">
+
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 sm:mb-5 text-sm font-light">
                     {item.description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-8 sm:mb-12">
+
+                  <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-6">
                     {item.tech.map((tag: string) => (
                       <span
                         key={tag}
-                        className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 text-[10px] sm:text-xs font-bold border border-emerald-200/50 dark:border-emerald-500/10"
+                        className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-200/50 dark:border-emerald-500/10"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <button
                       onClick={() => openPreview(item.live)}
-                      className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm sm:text-base font-bold rounded-xl sm:rounded-2xl transition-all border border-emerald-200 dark:border-emerald-500/20"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm font-bold rounded-xl transition-all border border-emerald-200 dark:border-emerald-500/20"
                     >
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
@@ -112,9 +149,9 @@ export default function Projects() {
                       href={item.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-emerald-500 hover:bg-emerald-400 text-black text-sm sm:text-base font-bold rounded-xl sm:rounded-2xl transition-all shadow-lg shadow-emerald-500/20"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-bold rounded-xl transition-all shadow-md shadow-emerald-500/20"
                     >
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                       Live Site
@@ -123,8 +160,8 @@ export default function Projects() {
                 </div>
 
                 {/* Image Side */}
-                <div 
-                  className={`relative h-[280px] sm:h-[450px] lg:h-auto overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image`}
+                <div
+                  className={`relative h-[200px] sm:h-[280px] lg:h-auto overflow-hidden bg-gray-100 dark:bg-gray-950 cursor-pointer group/image`}
                   onClick={() => openPreview(item.live)}
                 >
                   {item.image ? (
@@ -170,7 +207,8 @@ export default function Projects() {
             </div>
           ))
           )}
-        </div>
+          </div>
+        )}
 
         {/* Other Projects (Hidden if empty) */}
         {(projects as any[]).length > 0 && (
