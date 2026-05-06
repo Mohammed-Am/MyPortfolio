@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Mohammed Amouzoun',
-  title: 'Web Design & Development & AI Automation',
+  title: 'Web Developer',
   tagline: "Développeur Front-End passionné par WordPress",
   description:
     'Front-End WordPress developer with a passion for building fast, beautiful, and responsive websites with next-level digital experiences.',
@@ -15,7 +15,7 @@ export const siteConfig = {
 export const heroContent = {
   greeting: 'Bonjour, je suis',
   name: 'Mohammed Amouzoun',
-  title: 'Web Design & Development & AI Automation',
+  title: 'Web Developer',
   subtitle: '',
   description:
     "Je crée des sites WordPress performants, personnalisés et responsives pour offrir une expérience utilisateur exceptionnelle.",
@@ -185,7 +185,7 @@ export const contactContent = {
   title: 'Get In Touch',
   subtitle: "Let's work together",
   description:
-    "I specialize in Web Design, Development, and AI Automation. If you're looking for a motivated developer who brings high-end visuals and intelligent workflows to the table — let's talk!",
+    "I specialize in Web Development. If you're looking for a motivated developer who brings high-end visuals and intelligent workflows to the table — let's talk!",
   applicationNote: 'Available for freelance projects and new opportunities.',
   emailSubject: 'New Project Inquiry from Portfolio',
   email: 'recrutement@izemx.com',

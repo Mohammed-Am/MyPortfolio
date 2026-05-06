@@ -2,11 +2,11 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
-import { SiTypescript, SiNextdotjs, SiPhp, SiReact, SiWordpress, SiTailwindcss, SiJavascript, SiGit, SiN8N, SiFigma, SiWebflow, SiGreensock } from 'react-icons/si'
+import { SiReact, SiWordpress, SiTailwindcss, SiGit, SiWoocommerce } from 'react-icons/si'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
-const roles = ['Front-End Developer', 'WordPress Expert', 'Web Designer', 'AI Automation']
+const roles = ['Front-End Developer', 'WordPress Expert', 'Web Developer']
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -62,32 +62,16 @@ export default function Hero() {
                   />
                 </div>
 
-                {/* Orbiting Tech Icons (Real SVGs) */}
-                
+                {/* Orbiting Tech Icons */}
+
                 {/* Outer Ring Icons */}
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#3178C6] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '0s' } as any}>
-                  <SiTypescript className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">TypeScript</span>
-                </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-black shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-5s' } as any}>
-                  <SiNextdotjs className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Next.js</span>
-                </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#777BB4] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-10s' } as any}>
-                  <SiPhp className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">PHP</span>
-                </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#F05032] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-15s' } as any}>
+                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#F05032] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '0s' } as any}>
                   <SiGit className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Git</span>
                 </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#FF6D5A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-20s' } as any}>
-                  <SiN8N className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">n8n</span>
-                </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#4353FF] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-25s' } as any}>
-                  <SiWebflow className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Webflow</span>
+                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#96588A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-15s' } as any}>
+                  <SiWoocommerce className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">WooCommerce</span>
                 </div>
 
                 {/* Inner Ring Icons */}
@@ -95,31 +79,17 @@ export default function Hero() {
                   <SiReact className="w-6 h-6 sm:w-7 sm:h-7 text-[#61DAFB]" />
                   <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">React</span>
                 </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#21759B] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-3s' } as any}>
+                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#21759B] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-4.5s' } as any}>
                   <SiWordpress className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">WordPress</span>
                 </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#0F172A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-6s' } as any}>
+                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#0F172A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-9s' } as any}>
                   <SiTailwindcss className="w-5 h-5 sm:w-6 sm:h-6 text-[#38BDF8]" />
                   <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Tailwind CSS</span>
                 </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#323330] shadow-xl border border-white/10 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-9s' } as any}>
+                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#323330] shadow-xl border border-white/10 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-13.5s' } as any}>
                   <span className="text-[#F7DF1E] font-bold text-sm sm:text-base tracking-tighter">JS</span>
                   <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">JavaScript</span>
-                </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#111] shadow-xl border border-white/10 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-12s' } as any}>
-                  <SiGreensock className="w-6 h-6 sm:w-7 sm:h-7 text-[#88CE02]" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">GSAP</span>
-                </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-white shadow-xl border border-gray-200 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-15s' } as any}>
-                  <svg viewBox="0 0 38 57" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
-                    <path fill="#F24E1E" d="M0 9.5A9.5 9.5 0 0 1 9.5 0H19v19H9.5A9.5 9.5 0 0 1 0 9.5z"/>
-                    <path fill="#FF7262" d="M19 9.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
-                    <path fill="#A259FF" d="M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z"/>
-                    <path fill="#1ABCFE" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
-                    <path fill="#0ACF83" d="M0 47.5A9.5 9.5 0 0 0 9.5 57 9.5 9.5 0 0 0 19 47.5V38H9.5A9.5 9.5 0 0 0 0 47.5z"/>
-                  </svg>
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Figma</span>
                 </div>
               </div>
             </div>
@@ -136,7 +106,7 @@ export default function Hero() {
 
               <div className="flex items-center justify-center lg:justify-start w-full px-4 sm:px-0">
                 <span className={`${exo2.className} text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-snug sm:leading-none text-gray-900 dark:text-white tracking-normal sm:tracking-wider transition-colors duration-300`}>
-                  Web Design & Development
+                  Web Developer
                 </span>
               </div>
 

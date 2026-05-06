@@ -48,7 +48,7 @@ export default function Projects() {
         {/* Tabs */}
         <div className="flex justify-center mb-12 sm:mb-16">
           <div className="inline-flex items-center flex-wrap justify-center gap-2 p-1.5 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10">
-            {['Web Design', 'Web Development', 'AI Automation'].map((tab) => (
+            {['Web Development'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
