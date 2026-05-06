@@ -46,6 +46,7 @@ export const skillsContent = {
     { name: 'MySQL', icon: 'mysql', color: '4479A1' },
     { name: 'Node.js', icon: 'nodedotjs', color: '339933' },
     { name: 'WordPress', icon: 'wordpress', color: '21759B' },
+    { name: 'WooCommerce', icon: 'woocommerce', color: '96588A' },
     { name: 'TypeScript', icon: 'typescript', color: '3178C6' },
     { name: 'Figma', icon: 'figma', color: 'F24E1E' },
     { name: 'Cloudflare', icon: 'cloudflare', color: 'F38020' },
