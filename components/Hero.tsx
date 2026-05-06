@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
-import { SiReact, SiWordpress, SiTailwindcss, SiGit, SiWoocommerce } from 'react-icons/si'
+
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
@@ -45,14 +45,8 @@ export default function Hero() {
             {/* Left: Profile & Orbiting Tech Stack */}
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <div className="relative flex items-center justify-center w-[220px] h-[220px] sm:w-[450px] sm:h-[450px] mx-auto lg:mx-0">
-                
-                {/* Outer Orbit Track */}
-                <div className="absolute w-[200px] h-[200px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_40s_linear_infinite]" />
-                {/* Inner Orbit Track */}
-                <div className="absolute w-[130px] h-[130px] sm:w-[280px] sm:h-[280px] rounded-full border border-dashed border-emerald-500/30 dark:border-white/10 opacity-60 animate-[spin_30s_linear_infinite_reverse]" />
-
                 {/* Profile image */}
-                <div className="relative w-20 h-20 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)] z-10 bg-slate-100 dark:bg-gray-800">
+                <div className="relative w-28 h-28 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2 border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)] z-10 bg-slate-100 dark:bg-gray-800">
                   <Image
                     src="/profil.jpg"
                     alt="Mohammed Amouzoun"
@@ -60,37 +54,6 @@ export default function Hero() {
                     className="object-cover"
                     priority
                   />
-                </div>
-
-                {/* Orbiting Tech Icons */}
-
-                {/* Outer Ring Icons */}
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#F05032] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '0s' } as any}>
-                  <SiGit className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Git</span>
-                </div>
-                <div className="orbit-item outer-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#96588A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '30s', '--delay': '-15s' } as any}>
-                  <SiWoocommerce className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">WooCommerce</span>
-                </div>
-
-                {/* Inner Ring Icons */}
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#20232A] shadow-xl border border-[#61DAFB]/40 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '0s' } as any}>
-                  <SiReact className="w-6 h-6 sm:w-7 sm:h-7 text-[#61DAFB]" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">React</span>
-                </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#21759B] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-4.5s' } as any}>
-                  <SiWordpress className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">WordPress</span>
-                </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#0F172A] shadow-xl border border-white/20 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-9s' } as any}>
-                  <SiTailwindcss className="w-5 h-5 sm:w-6 sm:h-6 text-[#38BDF8]" />
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">Tailwind CSS</span>
-                </div>
-                <div className="orbit-item inner-orbit w-10 h-10 sm:w-12 sm:h-12 -ml-5 -mt-5 sm:-ml-6 sm:-mt-6 flex items-center justify-center rounded-full bg-[#323330] shadow-xl border border-white/10 cursor-default group z-20 hover:z-50" style={{ '--duration': '18s', '--delay': '-13.5s' } as any}>
-                  <span className="text-[#F7DF1E] font-bold text-sm sm:text-base tracking-tighter">JS</span>
-                  <span className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1.5 bg-[#050a10]/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold rounded-lg pointer-events-none whitespace-nowrap border border-white/10 shadow-2xl z-50">JavaScript</span>
-                </div>
               </div>
             </div>
 
@@ -103,12 +66,6 @@ export default function Hero() {
               <h1 className={`${exo2.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white drop-shadow-sm tracking-tight sm:tracking-widest leading-tight sm:leading-none transition-colors duration-300`}>
                 Mohammed
               </h1>
-
-              <div className="flex items-center justify-center lg:justify-start w-full px-4 sm:px-0">
-                <span className={`${exo2.className} text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-snug sm:leading-none text-gray-900 dark:text-white tracking-normal sm:tracking-wider transition-colors duration-300`}>
-                  Web Developer
-                </span>
-              </div>
 
               <div className={`${exo2.className} text-base sm:text-xl font-light text-gray-700 dark:text-gray-300 h-8 flex items-center justify-center lg:justify-start transition-colors duration-300`}>
                 <span className="text-emerald-400 font-medium tracking-wide">{displayed}</span>
