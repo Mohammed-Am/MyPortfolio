@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Mohammed Amouzoun',
-  title: 'Web Developer',
+  title: 'Web Designer and Web Developer',
   tagline: "Développeur Front-End passionné par WordPress",
   description:
     'Front-End WordPress developer with a passion for building fast, beautiful, and responsive websites with next-level digital experiences.',

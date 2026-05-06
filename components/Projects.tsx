@@ -45,24 +45,7 @@ export default function Projects() {
           <div className="w-12 sm:w-20 h-1.5 bg-emerald-500 mx-auto mt-6 rounded-full" />
         </div>
 
-        {/* Tabs */}
-        <div className="flex justify-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center flex-wrap justify-center gap-2 p-1.5 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10">
-            {['Web Development'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 ${
-                  activeTab === tab 
-                    ? 'bg-white dark:bg-[#1A1A1A] text-emerald-600 dark:text-emerald-400 shadow-sm border border-gray-200/50 dark:border-white/5' 
-                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
+
 
         {/* Featured Projects Section */}
         <div className="flex flex-col gap-10 sm:gap-24 mb-16 sm:mb-32">

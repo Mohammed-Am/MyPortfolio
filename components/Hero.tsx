@@ -78,7 +78,7 @@ export default function Hero() {
           </p>
 
           {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-2 w-full">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-2 w-full">
             <a
               href="#projects"
               className="group w-full sm:w-auto px-7 py-3.5 bg-emerald-500/90 hover:bg-emerald-400 text-[#050a10] text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 hover:-translate-y-0.5"
@@ -87,12 +87,6 @@ export default function Hero() {
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
-            <a
-              href="#contact"
-              className="group w-full sm:w-auto px-7 py-3.5 border border-emerald-500/40 hover:border-emerald-500 text-emerald-600 dark:text-emerald-400 text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5"
-            >
-              Contact Me
             </a>
           </div>
         </div>
