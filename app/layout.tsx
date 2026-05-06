@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Mohammed Amouzoun — Web Developer | WordPress & React Expert',
+  title: 'Mohammed Amouzoun — Web Designer and Web Developer',
   description:
     'Portfolio of Mohammed Amouzoun (also known as Mohamed Amozon), a Web Developer and WordPress specialist from Morocco. Building premium websites with React, Next.js and WooCommerce.',
   keywords: [
