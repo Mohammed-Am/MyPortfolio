@@ -72,9 +72,10 @@ export default function Hero() {
           </div>
 
           <p className={`${exo2.className} text-gray-600 dark:text-gray-400/90 text-sm sm:text-base md:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300`}>
-            I build <span className="text-gray-900 dark:text-white font-semibold">fast, beautiful websites</span> and wire them with{' '}
-            <span className="text-emerald-500 dark:text-emerald-400 font-semibold">AI automations</span>{' '}
-            that work while you sleep — so your business grows on autopilot.
+            From the first pixel to the last automation — I help businesses launch{' '}
+            <span className="text-gray-900 dark:text-white font-semibold">stunning websites</span> and unlock the power of{' '}
+            <span className="text-emerald-500 dark:text-emerald-400 font-semibold">AI</span>{' '}
+            to grow faster, smarter.
           </p>
 
           {/* CTA */}
