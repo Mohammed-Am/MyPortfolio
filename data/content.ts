@@ -49,6 +49,7 @@ export const skillsContent = {
     { name: 'Docker', icon: 'docker', color: '2496ED' },
     { name: 'Git', icon: 'git', color: 'F05032' },
     { name: 'MySQL', icon: 'mysql', color: '4479A1' },
+    { name: 'Python', icon: 'python', color: '3776AB' },
   ],
 }
 

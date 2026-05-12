@@ -4,7 +4,8 @@ import Image from 'next/image'
 import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
-  { href: '#about', label: 'About' },
+  { href: '#hero', label: 'About' },
+  { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#services', label: 'Services' },
 ]
