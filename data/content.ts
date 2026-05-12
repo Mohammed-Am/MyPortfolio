@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Mohammed Amouzoun',
-  title: 'WordPress Developer & AI Automation Specialist',
+  title: 'AI Automation Specialist',
   tagline: "Développeur Front-End passionné par WordPress",
   description:
     'Front-End WordPress developer with a passion for building fast, beautiful, and responsive websites with next-level digital experiences.',
@@ -103,40 +103,40 @@ export const servicesContent = {
   subtitle: 'Services & Expertise',
   services: [
     {
-      icon: '🚀',
-      title: 'Headless WordPress Development',
+      icon: '🤖',
+      title: 'AI Workflow Automation',
       description:
-        'Building ultra-fast, premium web experiences using WordPress as a headless CMS with modern frameworks like Next.js and React.',
+        'Designing and deploying intelligent automation pipelines using n8n and Make.com — connecting your tools, eliminating repetitive tasks, and saving hours every day.',
     },
     {
-      icon: '🛒',
-      title: 'Custom E-commerce Platforms',
+      icon: '💬',
+      title: 'Custom AI Chatbots',
       description:
-        'High-performance online stores with headless architectures, bilingual support (Arabic/English/French), and custom checkout integrations.',
+        'Building context-aware AI chatbots trained on your business data — for customer support, lead qualification, and internal knowledge management.',
     },
     {
-      icon: '✨',
-      title: 'Modern Front-End Development',
+      icon: '🔗',
+      title: 'API & System Integrations',
       description:
-        'Crafting pixel-perfect, highly interactive, and responsive user interfaces with smooth animations using React, Next.js, and GSAP.',
+        'Seamlessly connecting SaaS platforms, CRMs, databases, and custom APIs to create fully automated ecosystems with zero manual intervention.',
     },
     {
-      icon: '🎨',
-      title: 'Premium UI/UX Design',
+      icon: '🧠',
+      title: 'AI Agent Development',
       description:
-        'Crafting cinematic, high-end visual designs that are fully responsive and optimized for a luxurious user experience on all devices.',
+        'Engineering autonomous AI agents powered by LLMs that can reason, plan, and execute multi-step tasks — from data scraping to report generation.',
     },
     {
       icon: '⚡',
-      title: 'Performance & SEO Mastery',
+      title: 'Process Optimization',
       description:
-        'Optimizing every millisecond with advanced caching, Cloudflare integration, and technical SEO to ensure top-tier Core Web Vitals.',
+        'Auditing your existing workflows to identify bottlenecks and implementing smart automations that cut operational costs and boost efficiency.',
     },
     {
-      icon: '🔧',
-      title: 'WordPress Custom Engineering',
+      icon: '📊',
+      title: 'Data Pipelines & Reporting',
       description:
-        'Bespoke theme and plugin development using advanced PHP, ACF, and Custom Post Types tailored to specific business needs.',
+        'Building automated data collection, transformation, and reporting pipelines — delivering real-time insights to your dashboards without lifting a finger.',
     },
   ],
 }
@@ -184,9 +184,9 @@ export const contactContent = {
   title: 'Get In Touch',
   subtitle: "Let's work together",
   description:
-    "I specialize in Web Development. If you're looking for a motivated developer who brings high-end visuals and intelligent workflows to the table — let's talk!",
+    "I specialize in AI Automation. If you're looking to streamline your operations, build intelligent workflows, or deploy AI agents that work for you 24/7 — let's talk!",
   applicationNote: 'Available for freelance projects and new opportunities.',
   emailSubject: 'New Project Inquiry from Portfolio',
-  email: 'recrutement@izemx.com',
-  availability: '✅ Available for WordPress internship — Remote — Starting immediately',
+  email: 'mh.amouzoun@gmail.com',
+  availability: '✅ Available for AI Automation projects — Remote — Starting immediately',
 }

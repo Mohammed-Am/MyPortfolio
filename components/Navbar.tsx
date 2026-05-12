@@ -3,11 +3,15 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ThemeToggle } from './ThemeToggle'
 
+const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  e.preventDefault()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
+
 const navLinks = [
-  { href: '#hero', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#services', label: 'Services' },
+  { href: 'hero', label: 'About' },
+  { href: 'projects', label: 'Projects' },
+  { href: 'services', label: 'Services' },
 ]
 
 export default function Navbar() {
@@ -38,7 +42,8 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`#${link.href}`}
+              onClick={(e) => scrollTo(e, link.href)}
               className="px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-all"
             >
               {link.label}
@@ -51,6 +56,7 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="#contact"
+            onClick={(e) => scrollTo(e, 'contact')}
             className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold rounded-lg transition-all hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
           >
             Contact Me
@@ -62,6 +68,7 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="#contact"
+            onClick={(e) => scrollTo(e, 'contact')}
             className="flex items-center gap-1.5 px-3 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold rounded-lg transition-all"
           >
             Contact
@@ -90,8 +97,8 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
+              href={`#${link.href}`}
+              onClick={(e) => { scrollTo(e, link.href); setMobileOpen(false) }}
               className="px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-all"
             >
               {link.label}
@@ -100,7 +107,7 @@ export default function Navbar() {
           <div className="mt-2 flex items-center justify-between">
             <a
               href="#contact"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => { scrollTo(e, 'contact'); setMobileOpen(false) }}
               className="flex-1 px-4 py-2.5 bg-emerald-500 text-black text-sm font-semibold rounded-lg text-center"
             >
               Contact Me

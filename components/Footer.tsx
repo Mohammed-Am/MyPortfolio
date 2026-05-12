@@ -1,11 +1,17 @@
+'use client'
 import { siteConfig } from '@/data/content'
 import Image from 'next/image'
 
+const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  e.preventDefault()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
+
 const footerLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#services', label: 'Services' },
-  { href: '#contact', label: 'Contact' },
+  { href: 'about', label: 'About' },
+  { href: 'projects', label: 'Projects' },
+  { href: 'services', label: 'Services' },
+  { href: 'contact', label: 'Contact' },
 ]
 
 export default function Footer() {
@@ -29,7 +35,11 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-gray-600 dark:text-gray-400 text-xs hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+                  <a
+                    href={`#${link.href}`}
+                    onClick={(e) => scrollTo(e, link.href)}
+                    className="text-gray-600 dark:text-gray-400 text-xs hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
+                  >
                     {link.label}
                   </a>
                 </li>

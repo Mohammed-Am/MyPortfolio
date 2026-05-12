@@ -1,5 +1,4 @@
 'use client'
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
 import { SiGithub } from 'react-icons/si'
@@ -7,34 +6,7 @@ import { FaLinkedin } from 'react-icons/fa'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
-const roles = ['WordPress Developer', 'AI Automation Specialist']
-
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [displayed, setDisplayed] = useState('')
-  const [typing, setTyping] = useState(true)
-
-  useEffect(() => {
-    const target = roles[roleIndex]
-    let timeout: ReturnType<typeof setTimeout>
-
-    if (typing) {
-      if (displayed.length < target.length) {
-        timeout = setTimeout(() => setDisplayed(target.slice(0, displayed.length + 1)), 80)
-      } else {
-        timeout = setTimeout(() => setTyping(false), 2000)
-      }
-    } else {
-      if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40)
-      } else {
-        setRoleIndex((i) => (i + 1) % roles.length)
-        setTyping(true)
-      }
-    }
-    return () => clearTimeout(timeout)
-  }, [displayed, typing, roleIndex])
-
   return (
     <section
       id="hero"
@@ -72,23 +44,29 @@ export default function Hero() {
             Mohammed
           </h1>
 
-          {/* Typing role */}
+          {/* Static role */}
           <div className="h-8 sm:h-10 flex items-center justify-center lg:justify-start">
             <span className={`${exo2.className} text-base sm:text-2xl lg:text-3xl font-medium text-gray-500 dark:text-gray-300 tracking-wide`}>
-              I am {roleIndex === 0 ? 'a' : 'an'} <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{displayed}</span>
-              <span className="inline-block w-0.5 h-5 sm:h-8 bg-emerald-500 dark:bg-emerald-400 ml-1 animate-pulse align-middle" />
+              I am an <span className="text-emerald-500 dark:text-emerald-400 font-semibold">AI Automation Specialist</span>
             </span>
           </div>
 
           {/* Description */}
-          <p className={`${exo2.className} text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed font-light max-w-sm sm:max-w-lg`}>
-            I build exceptional digital experiences with modern technologies. Passionate about creating scalable, user-centered applications.
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed max-w-lg">
+            I help businesses eliminate repetitive work by building smart AI
+            automations — so they save 10+ hours every week and focus on what
+            actually grows their business.
+          </p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 italic max-w-lg">
+            I also build the websites that run these automations — headless
+            WordPress, Next.js, and React.
           </p>
 
           {/* CTA Button */}
           <div className="flex items-center justify-center lg:justify-start gap-4 w-full">
             <a
               href="#projects"
+              onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="group px-6 py-3 sm:px-7 sm:py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
             >
               View My Projects
