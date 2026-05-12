@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Mohammed Amouzoun',
-  title: 'Web Designer and Web Developer',
+  title: 'WordPress Developer & AI Automation Specialist',
   tagline: "Développeur Front-End passionné par WordPress",
   description:
     'Front-End WordPress developer with a passion for building fast, beautiful, and responsive websites with next-level digital experiences.',
@@ -15,7 +15,7 @@ export const siteConfig = {
 export const heroContent = {
   greeting: 'Bonjour, je suis',
   name: 'Mohammed Amouzoun',
-  title: 'Web Developer',
+  title: 'WordPress Developer & AI Automation Specialist',
   subtitle: '',
   description:
     "Je crée des sites WordPress performants, personnalisés et responsives pour offrir une expérience utilisateur exceptionnelle.",
@@ -34,23 +34,21 @@ export const aboutContent = {
 }
 
 export const skillsContent = {
-  title: 'Technical Skills',
-  subtitle: 'My tech stack',
+  title: 'Skills',
+  subtitle: 'What I master',
   skills: [
     { name: 'HTML / CSS', icons: [{ slug: 'html5', color: 'E34F26' }, { slug: 'css', color: '1572B6' }] },
     { name: 'JavaScript', icon: 'javascript', color: 'F7DF1E' },
     { name: 'React', icon: 'react', color: '61DAFB' },
-    { name: 'Next.js', icon: 'nextdotjs', color: '000000' },
     { name: 'Tailwind CSS', icon: 'tailwindcss', color: '06B6D4' },
-    { name: 'PHP', icon: 'php', color: '777BB4' },
-    { name: 'MySQL', icon: 'mysql', color: '4479A1' },
-    { name: 'Node.js', icon: 'nodedotjs', color: '339933' },
     { name: 'WordPress', icon: 'wordpress', color: '21759B' },
     { name: 'WooCommerce', icon: 'woocommerce', color: '96588A' },
-    { name: 'TypeScript', icon: 'typescript', color: '3178C6' },
-    { name: 'Figma', icon: 'figma', color: 'F24E1E' },
-    { name: 'Cloudflare', icon: 'cloudflare', color: 'F38020' },
-    { name: 'GSAP', icon: 'greensock', color: '88CE02' },
+    { name: 'PHP', icon: 'php', color: '777BB4' },
+    { name: 'n8n', icon: 'n8n', color: 'EA4C89' },
+    { name: 'Make', icon: 'make', color: 'A464D4' },
+    { name: 'Docker', icon: 'docker', color: '2496ED' },
+    { name: 'Git', icon: 'git', color: 'F05032' },
+    { name: 'MySQL', icon: 'mysql', color: '4479A1' },
   ],
 }
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amouzoun.dev/sitemap.xml

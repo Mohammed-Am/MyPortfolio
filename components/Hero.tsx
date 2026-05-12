@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
+import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
-const roles = ['Full-Stack Web Developer', 'Building AI Workflows & Automations']
+const roles = ['WordPress Developer', 'AI Automation Specialist']
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -36,59 +38,99 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300"
+      className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300"
     >
-      <div id="about" className="absolute top-0" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-emerald-100/40 via-slate-50 to-slate-50 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-emerald-900/20 dark:via-[#050a10] dark:to-[#050a10] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 pt-20 pb-10 flex flex-col items-center text-center gap-6 sm:gap-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-28 lg:py-0 lg:h-screen flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
 
-        {/* Profile Photo — top */}
-        <div className="relative w-28 h-28 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-emerald-500/60 shadow-[0_0_50px_rgba(16,185,129,0.3)] flex-shrink-0 bg-slate-100 dark:bg-gray-800">
-          <Image
-            src="/profil.jpg"
-            alt="Mohammed Amouzoun"
-            fill
-            className="object-cover"
-            priority
-          />
+        {/* Mobile: Profile photo on top */}
+        <div className="flex lg:hidden items-center justify-center">
+          <div className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-emerald-500/80 shadow-[0_0_50px_rgba(16,185,129,0.4)] bg-slate-200 dark:bg-slate-800">
+            <Image
+              src="/profil.jpg"
+              alt="Mohammed Amouzoun"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
 
-        {/* Text — bottom */}
-        <div className="flex flex-col items-center gap-3 sm:gap-4">
-          <p className={`${exo2.className} text-emerald-400/90 text-lg sm:text-xl font-medium tracking-wider flex items-center gap-2`}>
-            <span className="wave-emoji">👋</span> Hello, I am
-          </p>
+        {/* Left Column - Text */}
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 sm:gap-5 w-full">
 
-          <h1 className={`${exo2.className} text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight transition-colors duration-300`}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-slate-200/80 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 backdrop-blur-sm">
+            <span className="wave-emoji text-sm sm:text-base">👋</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-200">Available for work</span>
+          </div>
+
+          {/* Name */}
+          <h1 className={`${exo2.className} text-gray-900 dark:text-white text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.1]`}>
             Mohammed
           </h1>
 
-          {/* Typing animation */}
-          <div className="h-8 sm:h-10 flex items-center justify-center">
-            <span className={`${exo2.className} text-lg sm:text-2xl font-semibold text-emerald-400 tracking-wide`}>
-              {displayed}
-              <span className="inline-block w-0.5 h-5 sm:h-6 bg-emerald-400 ml-0.5 animate-pulse align-middle" />
+          {/* Typing role */}
+          <div className="h-8 sm:h-10 flex items-center justify-center lg:justify-start">
+            <span className={`${exo2.className} text-base sm:text-2xl lg:text-3xl font-medium text-gray-500 dark:text-gray-300 tracking-wide`}>
+              I am {roleIndex === 0 ? 'a' : 'an'} <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{displayed}</span>
+              <span className="inline-block w-0.5 h-5 sm:h-8 bg-emerald-500 dark:bg-emerald-400 ml-1 animate-pulse align-middle" />
             </span>
           </div>
 
-          <p className={`${exo2.className} text-gray-600 dark:text-gray-400/90 text-sm sm:text-base md:text-lg leading-relaxed font-light max-w-xl transition-colors duration-300`}>
-            From the first pixel to the last automation — I help businesses launch{' '}
-            <span className="text-gray-900 dark:text-white font-semibold">stunning websites</span> and unlock the power of{' '}
-            <span className="text-emerald-500 dark:text-emerald-400 font-semibold">AI</span>{' '}
-            to grow faster, smarter.
+          {/* Description */}
+          <p className={`${exo2.className} text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed font-light max-w-sm sm:max-w-lg`}>
+            I build exceptional digital experiences with modern technologies. Passionate about creating scalable, user-centered applications.
           </p>
 
-          {/* CTA */}
-          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-2 w-full">
+          {/* CTA Button */}
+          <div className="flex items-center justify-center lg:justify-start gap-4 w-full">
             <a
               href="#projects"
-              className="group w-full sm:w-auto px-7 py-3.5 bg-emerald-500/90 hover:bg-emerald-400 text-[#050a10] text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 hover:-translate-y-0.5"
+              className="group px-6 py-3 sm:px-7 sm:py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
             >
-              View My Work
+              View My Projects
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
+          </div>
+
+          {/* Social icons — mobile only (sidebar handles desktop) */}
+          <div className="flex lg:hidden items-center gap-3">
+            <a
+              href="https://github.com/Mohammed-Am"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="p-2.5 rounded-full bg-slate-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-all duration-200"
+            >
+              <SiGithub className="w-5 h-5" />
+            </a>
+            <a
+              href="https://linkedin.com/in/mohammed-amouzoun"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="p-2.5 rounded-full bg-slate-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-all duration-200"
+            >
+              <FaLinkedin className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Right Column — Desktop profile photo */}
+        <div className="hidden lg:flex items-center justify-center lg:flex-1">
+          <div className="relative w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-emerald-500/80 shadow-[0_0_60px_rgba(16,185,129,0.35)] bg-slate-200 dark:bg-slate-800">
+            <Image
+              src="/profil.jpg"
+              alt="Mohammed Amouzoun"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
 

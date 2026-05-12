@@ -5,9 +5,12 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Mohammed Amouzoun — Web Designer and Web Developer',
+  title: {
+    default: 'Mohammed Amouzoun — WordPress Developer & AI Automation Specialist',
+    template: '%s | Mohammed Amouzoun',
+  },
   description:
-    'Portfolio of Mohammed Amouzoun (also known as Mohamed Amozon), a Web Developer and WordPress specialist from Morocco. Building premium websites with React, Next.js and WooCommerce.',
+    'Portfolio of Mohammed Amouzoun (also known as Mohamed Amozon), a WordPress Developer and AI Automation specialist from Morocco. Building premium websites with React, Next.js and WooCommerce.',
   keywords: [
     'Mohammed Amouzoun',
     'Mohamed Amozon',
@@ -26,6 +29,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Mohammed Amouzoun', url: 'https://amouzoun.dev' }],
   creator: 'Mohammed Amouzoun',
+  publisher: 'Mohammed Amouzoun',
+  alternates: {
+    canonical: 'https://amouzoun.dev',
+  },
   robots: {
     index: true,
     follow: true,
@@ -38,19 +45,28 @@ export const metadata: Metadata = {
     icon: '/logo.png',
   },
   openGraph: {
-    title: 'Mohammed Amouzoun — Web Designer, Developer & AI Automation',
+    title: 'Mohammed Amouzoun — WordPress Developer & AI Automation Specialist',
     description:
-      'Portfolio of Mohammed Amouzoun — Web Designer, Front-End Developer & AI Automation specialist from Morocco.',
+      'Portfolio of Mohammed Amouzoun — WordPress Developer & AI Automation specialist from Morocco.',
     url: 'https://amouzoun.dev',
     siteName: 'Mohammed Amouzoun Portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/logo.png',
+        width: 512,
+        height: 512,
+        alt: 'Mohammed Amouzoun',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mohammed Amouzoun — Web Designer, Developer & AI Automation',
+    title: 'Mohammed Amouzoun — WordPress Developer & AI Automation Specialist',
     description:
-      'Portfolio of Mohammed Amouzoun — Web Designer, Front-End Developer & AI Automation specialist from Morocco.',
+      'Portfolio of Mohammed Amouzoun — WordPress Developer & AI Automation specialist from Morocco.',
+    images: ['/logo.png'],
   },
 }
 
@@ -60,10 +76,15 @@ const jsonLd = {
   name: 'Mohammed Amouzoun',
   alternateName: ['Mohamed Amozon', 'Amouzoun'],
   url: 'https://amouzoun.dev',
-  jobTitle: 'Web Developer',
+  image: 'https://amouzoun.dev/logo.png',
+  jobTitle: 'WordPress Developer & AI Automation Specialist',
   description:
-    'Web Developer and WordPress specialist from Morocco.',
+    'WordPress Developer and AI Automation specialist from Morocco. Building premium websites with React, Next.js and WooCommerce.',
   email: 'mh.amouzoun@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'MA',
+  },
   sameAs: [
     'https://github.com/Mohammed-Am',
     'https://linkedin.com/in/mohammed-amouzoun',
@@ -72,11 +93,14 @@ const jsonLd = {
     'Web Design',
     'Front-End Development',
     'WordPress',
+    'WooCommerce',
     'React',
     'Next.js',
+    'TypeScript',
     'AI Automation',
     'n8n',
     'Chatbots',
+    'SEO',
   ],
 }
 
