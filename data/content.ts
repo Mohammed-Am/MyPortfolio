@@ -92,7 +92,7 @@ export const projectsContent = {
       image: 'https://api.microlink.io/?url=https://transferaiagent.com&screenshot=true&fullPage=true&meta=false&embed=screenshot.url',
       placeholder: 'Live screenshot of transferaiagent.com',
       badge: 'AI Automation',
-      category: 'Web Development',
+      category: 'AI Automation',
     },
   ],
   projects: [],
@@ -103,10 +103,22 @@ export const servicesContent = {
   subtitle: 'Services & Expertise',
   services: [
     {
+      icon: '🚀',
+      title: 'Full-Stack App Solutions',
+      description:
+        'Building high-performance, robust web applications from the ground up using Next.js and Node.js. Delivering lightning-fast user experiences and scalable backends.',
+    },
+    {
       icon: '🤖',
       title: 'AI Workflow Automation',
       description:
         'Designing and deploying intelligent automation pipelines using n8n and Make.com — connecting your tools, eliminating repetitive tasks, and saving hours every day.',
+    },
+    {
+      icon: '💻',
+      title: 'Front-End Engineering',
+      description:
+        'Crafting pixel-perfect, highly dynamic and responsive user interfaces with React, Tailwind CSS, and Framer Motion for premium digital experiences.',
     },
     {
       icon: '💬',
@@ -125,18 +137,6 @@ export const servicesContent = {
       title: 'AI Agent Development',
       description:
         'Engineering autonomous AI agents powered by LLMs that can reason, plan, and execute multi-step tasks — from data scraping to report generation.',
-    },
-    {
-      icon: '⚡',
-      title: 'Process Optimization',
-      description:
-        'Auditing your existing workflows to identify bottlenecks and implementing smart automations that cut operational costs and boost efficiency.',
-    },
-    {
-      icon: '📊',
-      title: 'Data Pipelines & Reporting',
-      description:
-        'Building automated data collection, transformation, and reporting pipelines — delivering real-time insights to your dashboards without lifting a finger.',
     },
   ],
 }

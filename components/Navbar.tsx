@@ -1,7 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { Exo_2 } from 'next/font/google'
 import { ThemeToggle } from './ThemeToggle'
+
+const exo2 = Exo_2({ subsets: ['latin'], weight: ['600', '700', '800', '900'], display: 'swap' })
 
 const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
   e.preventDefault()
@@ -34,7 +37,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center group transition-transform">
-          <Image src="/logo.png" alt="Amouzoun Dev Logo" width={400} height={150} className="h-8 sm:h-10 w-auto object-contain scale-[1.5] sm:scale-[2.5] origin-left dark:invert" />
+          <span className={`${exo2.className} text-lg sm:text-xl md:text-xl italic font-bold tracking-wider text-gray-900 dark:text-white group-hover:text-emerald-500 transition-colors`}>
+            Mohammed
+          </span>
         </a>
 
         {/* Desktop Nav */}

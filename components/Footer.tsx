@@ -1,7 +1,8 @@
 'use client'
 import { siteConfig } from '@/data/content'
-import Image from 'next/image'
+import { Exo_2 } from 'next/font/google'
 
+const exo2 = Exo_2({ subsets: ['latin'], weight: ['600', '700', '800', '900'], display: 'swap' })
 const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
   e.preventDefault()
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -21,9 +22,11 @@ export default function Footer() {
         <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-8 sm:mb-10 mt-2 sm:mt-6">
-              <Image src="/logo.png" alt="Amouzoun Dev Logo" width={400} height={150} className="h-8 sm:h-10 w-auto object-contain scale-[1.5] sm:scale-[2.5] origin-left dark:invert" />
-            </div>
+            <a href="#" className="flex items-center group transition-transform gap-2 mb-8 sm:mb-10 mt-2 sm:mt-6">
+              <span className={`${exo2.className} text-lg sm:text-xl md:text-xl italic font-bold tracking-wider text-gray-900 dark:text-white group-hover:text-emerald-500 transition-colors`}>
+                Mohammed
+              </span>
+            </a>
             <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed transition-colors duration-300">
               {siteConfig.title}
             </p>

@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
 import { SiGithub } from 'react-icons/si'
@@ -7,6 +8,23 @@ import { FaLinkedin } from 'react-icons/fa'
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
 export default function Hero() {
+  const [displayText, setDisplayText] = useState('')
+  const fullText = "Software AI Engineer & AI Automation Specialist"
+
+  useEffect(() => {
+    let index = 0
+    // Small delay before typing starts
+    const startDelay = setTimeout(() => {
+      const timer = setInterval(() => {
+        setDisplayText(fullText.substring(0, index + 1))
+        index++
+        if (index === fullText.length) clearInterval(timer)
+      }, 50)
+      return () => clearInterval(timer)
+    }, 500)
+    return () => clearTimeout(startDelay)
+  }, [])
+
   return (
     <section
       id="hero"
@@ -44,24 +62,20 @@ export default function Hero() {
             Mohammed
           </h1>
 
-          {/* Static role */}
-          <div className="h-8 sm:h-10 flex items-center justify-center lg:justify-start">
-            <span className={`${exo2.className} text-base sm:text-2xl lg:text-3xl font-medium text-gray-500 dark:text-gray-300 tracking-wide`}>
-              I am an <span className="text-emerald-500 dark:text-emerald-400 font-semibold">AI Automation Specialist</span>
-            </span>
+          {/* Typewriter role & Description */}
+          <div className="relative w-full flex flex-col items-center lg:items-start text-center lg:text-left mb-6 sm:mb-8">
+            <div className="flex flex-col items-center justify-center lg:justify-start lg:items-start mb-4 sm:mb-5">
+              <span className={`${exo2.className} text-sm sm:text-lg lg:text-xl font-medium text-gray-500 dark:text-gray-300 tracking-wide mb-1 sm:mb-2`}>
+                I am a
+              </span>
+              <span className={`${exo2.className} text-[clamp(11px,3.2vw,24px)] md:text-[clamp(14px,2vw,30px)] lg:text-3xl font-semibold text-emerald-500 dark:text-emerald-400 tracking-wide whitespace-nowrap min-h-[20px] sm:min-h-[30px] lg:min-h-[36px]`}>
+                {displayText}<span className="animate-pulse">|</span>
+              </span>
+            </div>
+            <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
+              I build robust, full-stack applications powered by state-of-the-art Large Language Models. From backend Node.js APIs to dynamic Next.js frontends, I create AI solutions that truly perform.
+            </p>
           </div>
-
-          {/* Description */}
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed max-w-lg">
-            I help businesses eliminate repetitive work by building smart AI
-            automations — so they save 10+ hours every week and focus on what
-            actually grows their business.
-          </p>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 italic max-w-lg">
-            I also build the websites that run these automations — headless
-            WordPress, Next.js, and React.
-          </p>
-
           {/* CTA Button */}
           <div className="flex items-center justify-center lg:justify-start gap-4 w-full">
             <a

@@ -17,10 +17,16 @@ export default function Services() {
           {servicesContent.services.map((service) => (
             <div
               key={service.title}
-              className="glass-card rounded-xl p-4 sm:p-6 transition-all hover:scale-[1.02] hover:-translate-y-1 group cursor-default"
+              className="group relative h-full"
             >
-              <h3 className="text-gray-900 dark:text-white font-bold text-base mb-2 transition-colors duration-300">{service.title}</h3>
-              <p className="text-gray-600 dark:text-gray-500 text-sm leading-relaxed transition-colors duration-300">{service.description}</p>
+              {/* Back offset card */}
+              <div className="absolute inset-0 bg-transparent border-2 border-emerald-500/20 dark:border-emerald-500/30 rounded-2xl transform translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3" />
+
+              {/* Front card */}
+              <div className="relative h-full bg-white dark:bg-[#0A0A0A] border-2 border-slate-100 dark:border-white/10 rounded-2xl p-6 sm:p-8 transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
+                <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-3 transition-colors duration-300">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-300">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>

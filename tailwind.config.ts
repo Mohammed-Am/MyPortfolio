@@ -29,6 +29,7 @@ const config: Config = {
         'spin-slow': 'spin 12s linear infinite',
         'spin-slow-reverse': 'spin-reverse 12s linear infinite',
         'spin-slower-reverse': 'spin-reverse 20s linear infinite',
+        'scroll': 'scroll 30s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -42,6 +43,10 @@ const config: Config = {
         'spin-reverse': {
           from: { transform: 'rotate(360deg)' },
           to: { transform: 'rotate(0deg)' },
+        },
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
