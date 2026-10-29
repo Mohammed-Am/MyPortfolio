@@ -10,6 +10,7 @@ export default function Services() {
             {servicesContent.subtitle}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white transition-colors duration-300">{servicesContent.title}</h2>
+          <p className="max-w-2xl mx-auto mt-5 text-gray-600 dark:text-gray-400 leading-relaxed">{servicesContent.description}</p>
           <div className="w-16 h-1 bg-emerald-500 mx-auto mt-4 rounded-full" />
         </div>
 

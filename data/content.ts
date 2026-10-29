@@ -1,35 +1,36 @@
 export const siteConfig = {
   name: 'Mohammed Amouzoun',
-  title: 'AI Automation Specialist',
-  tagline: "Développeur Front-End passionné par WordPress",
+  title: 'Website Solutions Builder + SEO & Content Marketer',
+  tagline: "Business websites, SEO foundations, and purposeful content",
   description:
-    'Front-End WordPress developer with a passion for building fast, beautiful, and responsive websites with next-level digital experiences.',
+    'I build responsive business websites and help shape their SEO and content, so visitors can find the right information and take the next step.',
   email: 'mh.amouzoun@gmail.com',
   github: 'https://github.com/Mohammed-Am',
   linkedin: 'https://linkedin.com/in/mohammed-amouzoun',
   location: 'Morocco',
-  availability: 'Available for WordPress internship — Remote',
+  availability: 'Available for website projects — Remote',
   cvUrl: '/cv-mohammed-amouzoun.pdf',
 }
 
 export const heroContent = {
-  greeting: 'Bonjour, je suis',
+  greeting: 'Hello, I am',
   name: 'Mohammed Amouzoun',
-  title: 'WordPress Developer & AI Automation Specialist',
-  subtitle: '',
-  description:
-    "Je crée des sites WordPress performants, personnalisés et responsives pour offrir une expérience utilisateur exceptionnelle.",
-  descriptionEn:
-    'I build high-performance, custom, and responsive WordPress websites to deliver exceptional user experiences.',
-  cta1: 'View My Work',
-  cta2: 'Download CV',
-  badge: '🚀 Open to WordPress Internship',
+  title: siteConfig.title,
+  subtitle: 'Websites built with a purpose',
+  description: 'I build clear, responsive websites for businesses, with SEO foundations and content that helps visitors understand your offer and get in touch.',
+  descriptionEn: 'Business websites, SEO foundations, and purposeful content.',
+  cta1: 'Discuss Your Website',
+  cta2: 'Explore My Work',
+  badge: 'Available for website projects',
 }
 
 export const aboutContent = {
   title: 'About Me',
-  subtitle: "Web Design & Development & AI Automation",
-  bio: [],
+  subtitle: "Build. Get found. Connect.",
+  bio: [
+    'I am Mohammed Amouzoun, a website builder based in Morocco. I bring web development, SEO, and content together to help businesses explain what they do and make it easy for customers to reach them.',
+    'My current focus is Framer, on-page SEO, and content strategy. I also build with WordPress and Next.js, choosing the approach that fits the project. I apply what I learn to my own websites and document the work as it develops.',
+  ],
   highlights: [],
 }
 
@@ -55,7 +56,7 @@ export const skillsContent = {
 
 export const projectsContent = {
   title: 'Featured Projects',
-  subtitle: 'My featured projects',
+  subtitle: 'Selected website projects',
   featured: [
     {
       title: 'HigherDecor',
@@ -99,45 +100,13 @@ export const projectsContent = {
 }
 
 export const servicesContent = {
-  title: 'What I Offer',
-  subtitle: 'Services & Expertise',
+  title: 'A Business Website, Ready for Your Next Step',
+  subtitle: 'One focused offer',
+  description: 'A website project that brings design, SEO foundations, and content together. We agree on the pages, deliverables, and timeline before work begins.',
   services: [
-    {
-      icon: '🚀',
-      title: 'Full-Stack App Solutions',
-      description:
-        'Building high-performance, robust web applications from the ground up using Next.js and Node.js. Delivering lightning-fast user experiences and scalable backends.',
-    },
-    {
-      icon: '🤖',
-      title: 'AI Workflow Automation',
-      description:
-        'Designing and deploying intelligent automation pipelines using n8n and Make.com — connecting your tools, eliminating repetitive tasks, and saving hours every day.',
-    },
-    {
-      icon: '💻',
-      title: 'Front-End Engineering',
-      description:
-        'Crafting pixel-perfect, highly dynamic and responsive user interfaces with React, Tailwind CSS, and Framer Motion for premium digital experiences.',
-    },
-    {
-      icon: '💬',
-      title: 'Custom AI Chatbots',
-      description:
-        'Building context-aware AI chatbots trained on your business data — for customer support, lead qualification, and internal knowledge management.',
-    },
-    {
-      icon: '🔗',
-      title: 'API & System Integrations',
-      description:
-        'Seamlessly connecting SaaS platforms, CRMs, databases, and custom APIs to create fully automated ecosystems with zero manual intervention.',
-    },
-    {
-      icon: '🧠',
-      title: 'AI Agent Development',
-      description:
-        'Engineering autonomous AI agents powered by LLMs that can reason, plan, and execute multi-step tasks — from data scraping to report generation.',
-    },
+    { icon: '💻', title: 'Website Design & Build', description: 'A responsive business website with clear navigation, service pages, and an easy way to contact you. Built with Framer, WordPress, or custom code to suit your needs.' },
+    { icon: '🔎', title: 'SEO Foundations', description: 'Keyword research, search intent, page titles, headings, internal links, and indexability checks. A practical starting point for organic visibility, with no ranking guarantees.' },
+    { icon: '✍️', title: 'Content That Supports Your Offer', description: 'Clear website copy and a focused content plan based on customer questions. Topics and briefs that connect what people search for with what your business provides.' },
   ],
 }
 
@@ -184,9 +153,9 @@ export const contactContent = {
   title: 'Get In Touch',
   subtitle: "Let's work together",
   description:
-    "I specialize in AI Automation. If you're looking to streamline your operations, build intelligent workflows, or deploy AI agents that work for you 24/7 — let's talk!",
+    "Need a new business website or a clearer direction for an existing one? Tell me about your business, your audience, and what you want the website to achieve.",
   applicationNote: 'Available for freelance projects and new opportunities.',
   emailSubject: 'New Project Inquiry from Portfolio',
   email: 'mh.amouzoun@gmail.com',
-  availability: '✅ Available for AI Automation projects — Remote — Starting immediately',
+  availability: 'Available for website, SEO, and content projects — Remote',
 }

@@ -8,7 +8,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pb-16 sm:pb-24 bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300"
+      className="relative pt-16 pb-16 sm:pb-24 bg-slate-50 dark:bg-[#050a10] text-gray-900 dark:text-white transition-colors duration-300"
     >
       {/* same subtle radial overlay as hero */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#f8fafc_90%)] dark:bg-[radial-gradient(ellipse_at_center,transparent_0%,#050a10_100%)] pointer-events-none transition-colors duration-300" />
@@ -16,6 +16,7 @@ export default function About() {
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
 
 
+        <h2 className="text-3xl font-bold mb-6">{aboutContent.title}</h2>
         <div className="space-y-5">
           {aboutContent.bio.map((para, i) => (
             <p

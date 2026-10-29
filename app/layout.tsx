@@ -6,12 +6,12 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mohammed Amouzoun — AI Automation Specialist',
+    default: 'Mohammed Amouzoun — Website Solutions Builder + SEO & Content Marketer',
     template: '%s | Mohammed Amouzoun',
   },
   description:
-    'Portfolio of Mohammed Amouzoun (also known as Mohamed Amozon), an AI Automation Specialist from Morocco. Building intelligent automation workflows with n8n, Make.com and AI agents.',
-
+    'Mohammed Amouzoun builds business websites with SEO foundations and clear content. Based in Morocco, available for remote website projects.',
+  keywords: ['Mohammed Amouzoun', 'Website Solutions Builder', 'SEO', 'Content Marketing', 'Web Design Morocco', 'Framer', 'WordPress'],
   authors: [{ name: 'Mohammed Amouzoun', url: 'https://amouzoun.dev' }],
   creator: 'Mohammed Amouzoun',
   publisher: 'Mohammed Amouzoun',
@@ -24,15 +24,20 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   icons: {
     icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
   openGraph: {
-    title: 'Mohammed Amouzoun — AI Automation Specialist',
+    title: 'Mohammed Amouzoun — Website Solutions Builder + SEO & Content Marketer',
     description:
-      'Portfolio of Mohammed Amouzoun — AI Automation Specialist from Morocco.',
+      'Business websites, SEO foundations, and content that helps visitors understand your offer. Based in Morocco, working remotely.',
     url: 'https://amouzoun.dev',
     siteName: 'Mohammed Amouzoun Portfolio',
     locale: 'en_US',
@@ -42,17 +47,19 @@ export const metadata: Metadata = {
         url: 'https://amouzoun.dev/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Mohammed Amouzoun - AI Automation Specialist',
+        alt: 'Mohammed Amouzoun - Website Solutions Builder + SEO & Content Marketer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mohammed Amouzoun — AI Automation Specialist',
+    title: 'Mohammed Amouzoun — Website Solutions Builder + SEO & Content Marketer',
     description:
-      'Portfolio of Mohammed Amouzoun — AI Automation Specialist from Morocco.',
+      'Business websites, SEO foundations, and content marketing. Based in Morocco.',
     images: ['https://amouzoun.dev/og-image.png'],
+    creator: '@MohammedAmouzoun',
   },
+  category: 'technology',
 }
 
 const jsonLd = {
@@ -61,10 +68,10 @@ const jsonLd = {
   name: 'Mohammed Amouzoun',
   alternateName: ['Mohamed Amozon', 'Amouzoun'],
   url: 'https://amouzoun.dev',
-  image: 'https://amouzoun.dev/logo.png',
-  jobTitle: 'AI Automation Specialist',
+  image: 'https://amouzoun.dev/profil.jpg',
+  jobTitle: ['Website Solutions Builder', 'SEO & Content Marketer'],
   description:
-    'AI Automation Specialist from Morocco. Building intelligent automation workflows with n8n, Make.com and AI agents.',
+    'Website builder based in Morocco, focused on business websites, on-page SEO, and content strategy.',
   email: 'mh.amouzoun@gmail.com',
   address: {
     '@type': 'PostalAddress',
@@ -74,15 +81,11 @@ const jsonLd = {
     'https://github.com/Mohammed-Am',
     'https://linkedin.com/in/mohammed-amouzoun',
   ],
-  knowsAbout: [
-    'AI Automation',
-    'n8n',
-    'Make.com',
-    'Chatbots',
-    'AI Agents',
-    'Workflow Automation',
-    'SEO',
-  ],
+  knowsAbout: ['Website Design', 'Responsive Development', 'WordPress', 'Next.js', 'On-page SEO', 'Content Strategy'],
+  offers: {
+    '@type': 'Offer',
+    description: 'Available for business website projects with SEO and content — Remote',
+  },
 }
 
 import { ThemeProvider } from '@/components/ThemeProvider'

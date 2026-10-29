@@ -1,22 +1,14 @@
 'use client'
-import { SiPython, SiFastapi, SiNodedotjs, SiJavascript, SiDocker, SiN8N, SiOpenai, SiNextdotjs, SiWordpress } from 'react-icons/si'
-import { FaDatabase, FaRobot } from 'react-icons/fa'
-import { TbBrain, TbBrandAzure } from 'react-icons/tb'
+import { SiFramer, SiNextdotjs, SiWordpress } from 'react-icons/si'
+import { Search, FileText, LayoutTemplate } from 'lucide-react'
 
 const tools = [
-    { name: 'Python', icon: SiPython },
-    { name: 'FastAPI', icon: SiFastapi },
-    { name: 'Node.js', icon: SiNodedotjs },
-    { name: 'JavaScript', icon: SiJavascript },
-    { name: 'Next.js', icon: SiNextdotjs },
+    { name: 'Framer', icon: SiFramer },
     { name: 'WordPress', icon: SiWordpress },
-    { name: 'SQL', icon: FaDatabase },
-    { name: 'Docker', icon: SiDocker },
-    { name: 'Azure', icon: TbBrandAzure },
-    { name: 'n8n', icon: SiN8N },
-    { name: 'AI Agents', icon: FaRobot },
-    { name: 'RAG Systems', icon: TbBrain },
-    { name: 'LLM', icon: SiOpenai },
+    { name: 'Next.js', icon: SiNextdotjs },
+    { name: 'On-page SEO', icon: Search },
+    { name: 'Content Strategy', icon: FileText },
+    { name: 'Responsive Design', icon: LayoutTemplate },
 ]
 
 export default function Toolkit() {

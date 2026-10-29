@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { heroContent } from '@/data/content'
 import Image from 'next/image'
 import { Exo_2 } from 'next/font/google'
 import { SiGithub } from 'react-icons/si'
@@ -8,23 +8,6 @@ import { FaLinkedin } from 'react-icons/fa'
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['100', '300', '400', '600', '700', '900'], display: 'swap' })
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState('')
-  const fullText = "Software AI Engineer & AI Automation Specialist"
-
-  useEffect(() => {
-    let index = 0
-    // Small delay before typing starts
-    const startDelay = setTimeout(() => {
-      const timer = setInterval(() => {
-        setDisplayText(fullText.substring(0, index + 1))
-        index++
-        if (index === fullText.length) clearInterval(timer)
-      }, 50)
-      return () => clearInterval(timer)
-    }, 500)
-    return () => clearTimeout(startDelay)
-  }, [])
-
   return (
     <section
       id="hero"
@@ -54,7 +37,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-slate-200/80 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 backdrop-blur-sm">
             <span className="wave-emoji text-sm sm:text-base">👋</span>
-            <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-200">Available for work</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-200">Available for website projects</span>
           </div>
 
           {/* Name */}
@@ -68,22 +51,22 @@ export default function Hero() {
               <span className={`${exo2.className} text-sm sm:text-lg lg:text-xl font-medium text-gray-500 dark:text-gray-300 tracking-wide mb-1 sm:mb-2`}>
                 I am a
               </span>
-              <span className={`${exo2.className} text-[clamp(11px,3.2vw,24px)] md:text-[clamp(14px,2vw,30px)] lg:text-3xl font-semibold text-emerald-500 dark:text-emerald-400 tracking-wide whitespace-nowrap min-h-[20px] sm:min-h-[30px] lg:min-h-[36px]`}>
-                {displayText}<span className="animate-pulse">|</span>
+              <span className={`${exo2.className} text-xl sm:text-2xl lg:text-3xl font-semibold text-emerald-500 dark:text-emerald-400 tracking-wide max-w-xl leading-snug`}>
+                {heroContent.title}
               </span>
             </div>
             <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
-              I build robust, full-stack applications powered by state-of-the-art Large Language Models. From backend Node.js APIs to dynamic Next.js frontends, I create AI solutions that truly perform.
+              {heroContent.description}
             </p>
           </div>
           {/* CTA Button */}
-          <div className="flex items-center justify-center lg:justify-start gap-4 w-full">
+          <div className="flex items-center justify-center lg:justify-start gap-4 w-full flex-wrap">
             <a
-              href="#projects"
-              onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="group px-6 py-3 sm:px-7 sm:py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm sm:text-base font-semibold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
             >
-              View My Projects
+              Discuss Your Website
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
