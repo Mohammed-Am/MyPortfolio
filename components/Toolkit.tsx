@@ -1,8 +1,9 @@
 'use client'
+import { usePortfolio } from './PortfolioProvider'
 import { SiFramer, SiNextdotjs, SiWordpress } from 'react-icons/si'
 import { Search, FileText, LayoutTemplate } from 'lucide-react'
 
-const tools = [
+const iconTools = [
     { name: 'Framer', icon: SiFramer },
     { name: 'WordPress', icon: SiWordpress },
     { name: 'Next.js', icon: SiNextdotjs },
@@ -12,6 +13,8 @@ const tools = [
 ]
 
 export default function Toolkit() {
+    const { toolkit } = usePortfolio()
+    const tools = toolkit.map(name => ({ name, icon: iconTools.find(tool => tool.name === name)?.icon || LayoutTemplate }))
     return (
         <section className="w-full py-8 sm:py-12 bg-slate-50 dark:bg-[#050a10] border-t border-b border-gray-200/50 dark:border-white/5 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">

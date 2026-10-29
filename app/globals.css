@@ -174,3 +174,16 @@ body {
   .outer-orbit { --radius: 190px; }
   .inner-orbit { --radius: 130px; }
 }
+
+/* Portfolio motion: quiet, progressive enhancement with an explicit opt-out. */
+@keyframes portraitFloat { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-10px) } }
+@keyframes ambientGlow { 0%,100% { opacity:.65 } 50% { opacity:1 } }
+@media (prefers-reduced-motion:no-preference) {
+  [data-portfolio-motion="on"] .hero-portrait { animation:portraitFloat 7s ease-in-out infinite; }
+  [data-portfolio-motion="on"] .hero-glow { animation:ambientGlow 9s ease-in-out infinite; }
+}
+[data-portfolio-motion="off"] *,[data-portfolio-motion="off"] *::before,[data-portfolio-motion="off"] *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto!important; }
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+}

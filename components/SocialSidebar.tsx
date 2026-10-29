@@ -1,16 +1,18 @@
 'use client'
 
+import { usePortfolio } from './PortfolioProvider'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
 
 export default function SocialSidebar() {
+  const { profile } = usePortfolio()
   return (
     <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4">
       {/* Vertical line top */}
       <div className="w-px h-16 bg-gradient-to-b from-transparent to-slate-400 dark:to-slate-600" />
 
       <a
-        href="https://github.com/Mohammed-Am"
+        href={profile.github}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -20,7 +22,7 @@ export default function SocialSidebar() {
       </a>
 
       <a
-        href="https://linkedin.com/in/mohammed-amouzoun"
+        href={profile.linkedin}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"

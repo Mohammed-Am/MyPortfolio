@@ -1,6 +1,8 @@
-import { servicesContent } from '@/data/content'
+'use client'
+import { usePortfolio } from './PortfolioProvider'
 
 export default function Services() {
+  const data = usePortfolio(); const servicesContent = { ...data.services, services: data.services.items }
   return (
     <section id="services" className="py-16 sm:py-24 bg-slate-50 dark:bg-[#0D0D0D] transition-colors duration-300 relative">
       <div className="absolute inset-0 dark-dot-grid opacity-20 pointer-events-none" />

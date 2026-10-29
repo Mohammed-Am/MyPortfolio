@@ -1,11 +1,13 @@
 'use client'
 import { useState } from 'react'
+import { usePortfolio } from './PortfolioProvider'
 
-const WHATSAPP_NUMBER = '212676426450'
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Mohammed%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.`
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false)
+  const { profile } = usePortfolio()
+  const WHATSAPP_URL = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent('Hello, I visited your portfolio and would like to discuss a website project.')}`
+  if (!profile.whatsapp) return null
 
   return (
     <a

@@ -62,43 +62,12 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Mohammed Amouzoun',
-  alternateName: ['Mohamed Amozon', 'Amouzoun'],
-  url: 'https://amouzoun.dev',
-  image: 'https://amouzoun.dev/profil.jpg',
-  jobTitle: ['Website Solutions Builder', 'SEO & Content Marketer'],
-  description:
-    'Website builder based in Morocco, focused on business websites, on-page SEO, and content strategy.',
-  email: 'mh.amouzoun@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'MA',
-  },
-  sameAs: [
-    'https://github.com/Mohammed-Am',
-    'https://linkedin.com/in/mohammed-amouzoun',
-  ],
-  knowsAbout: ['Website Design', 'Responsive Development', 'WordPress', 'Next.js', 'On-page SEO', 'Content Strategy'],
-  offers: {
-    '@type': 'Offer',
-    description: 'Available for business website projects with SEO and content — Remote',
-  },
-}
 
 import { ThemeProvider } from '@/components/ThemeProvider'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body className={`${inter.variable} font-sans bg-slate-50 dark:bg-[#0A0A0A] text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           {children}

@@ -1,40 +1,35 @@
 'use client'
 import { useState } from 'react'
-import { contactContent } from '@/data/content'
+import { usePortfolio } from './PortfolioProvider'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const { contact: contactContent, profile } = usePortfolio()
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    setErrorMessage('')
 
     try {
-      const formPayload = new FormData()
-      formPayload.append('access_key', '21447d3e-f61c-42f3-b05d-c42bbe415b91')
-      formPayload.append('name', formData.name)
-      formPayload.append('email', formData.email)
-      formPayload.append('message', formData.message)
-      formPayload.append('subject', contactContent.emailSubject)
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formPayload,
+      const response = await fetch('/api/contact', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData),
       })
-
       const result = await response.json()
-      if (result.success) {
+      if (response.ok && result.success) {
         setStatus('success')
-        setFormData({ name: '', email: '', message: '' }) // Clear form
+        setFormData({ name: '', email: '', message: '', website: '' }) // Clear form
         setTimeout(() => setStatus('idle'), 5000) // Reset after 5s
       } else {
-        console.error('Web3Forms Error:', result)
+        setErrorMessage(result.error || 'Could not send your message.')
         setStatus('error')
         setTimeout(() => setStatus('idle'), 5000) // Reset after 5s
       }
     } catch (error) {
-      console.error('Fetch Error:', error)
+      setErrorMessage('Connection failed. Please try again or email me directly.')
       setStatus('error')
       setTimeout(() => setStatus('idle'), 5000) // Reset after 5s
     }
@@ -57,9 +52,12 @@ export default function Contact() {
         <div className="max-w-2xl mx-auto">
           {/* Form */}
           <form onSubmit={handleSubmit} className="glass-card rounded-xl p-6 sm:p-8 space-y-5">
+            <div className="hidden" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={e => setFormData(p => ({ ...p, website: e.target.value }))} /></label></div>
             <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300">Your Name</label>
+              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300" htmlFor="contact-name">Your Name</label>
               <input
+                id="contact-name"
+                maxLength={120}
                 type="text"
                 required
                 value={formData.name}
@@ -69,8 +67,10 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300">Email</label>
+              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300" htmlFor="contact-email">Email</label>
               <input
+                id="contact-email"
+                maxLength={254}
                 type="email"
                 required
                 value={formData.email}
@@ -80,8 +80,11 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300">Message</label>
+              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1.5 transition-colors duration-300" htmlFor="contact-message">Message</label>
               <textarea
+                id="contact-message"
+                minLength={10}
+                maxLength={5000}
                 required
                 rows={5}
                 value={formData.message}
@@ -106,11 +109,13 @@ export default function Contact() {
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
-                  Send Message
+                  {contactContent.button}
                 </>
               )}
             </button>
+            {errorMessage && <p role="alert" className="text-sm text-red-600 dark:text-red-400">{errorMessage}</p>}
           </form>
+          <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">Prefer email? <a className="underline" href={`mailto:${profile.email}`}>{profile.email}</a></p>
         </div>
       </div>
 

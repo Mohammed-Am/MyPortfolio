@@ -1,5 +1,5 @@
 'use client'
-import { siteConfig } from '@/data/content'
+import { usePortfolio } from './PortfolioProvider'
 import { Exo_2 } from 'next/font/google'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['600', '700', '800', '900'], display: 'swap' })
@@ -16,6 +16,7 @@ const footerLinks = [
 ]
 
 export default function Footer() {
+  const { profile: siteConfig, sections } = usePortfolio()
   return (
     <footer className="border-t border-gray-200 dark:border-white/5 bg-slate-50 dark:bg-[#080808] transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -24,7 +25,7 @@ export default function Footer() {
           <div>
             <a href="#" className="flex items-center group transition-transform gap-2 mb-8 sm:mb-10 mt-2 sm:mt-6">
               <span className={`${exo2.className} text-lg sm:text-xl md:text-xl italic font-bold tracking-wider text-gray-900 dark:text-white group-hover:text-emerald-500 transition-colors`}>
-                Mohammed
+                {siteConfig.brand}
               </span>
             </a>
             <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed transition-colors duration-300">
@@ -36,7 +37,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 dark:text-white text-sm font-semibold mb-3 transition-colors duration-300">Navigation</h4>
             <ul className="space-y-2">
-              {footerLinks.map((link) => (
+              {footerLinks.filter(link => sections[link.href as keyof typeof sections]).map((link) => (
                 <li key={link.href}>
                   <a
                     href={`#${link.href}`}

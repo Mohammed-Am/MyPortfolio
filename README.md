@@ -37,9 +37,18 @@ npm run build
 npm start
 ```
 
+## Admin dashboard
+
+Open `/admin` to manage portfolio content, website projects, SEO, and incoming
+messages. Connect Supabase and configure the Hostinger Node.js app using
+[ADMIN_SETUP.md](ADMIN_SETUP.md). Until connected, the portfolio uses its bundled
+content and the contact form keeps its existing Web3Forms email delivery.
+
 ## Customization
 
-All editable content lives in one file:
+Legacy source content lives in this file; `lib/portfolio.ts` maps the active
+homepage defaults. Once the admin is configured, saved database content takes
+precedence over these source defaults:
 
 **`/data/content.ts`**
 

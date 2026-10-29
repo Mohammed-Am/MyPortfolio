@@ -1,10 +1,11 @@
 'use client'
 import { Exo_2 } from 'next/font/google'
-import { aboutContent } from '@/data/content'
+import { usePortfolio } from './PortfolioProvider'
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: ['300', '400', '600', '700'], display: 'swap' })
 
 export default function About() {
+  const data = usePortfolio(); const aboutContent = { title: data.about.title, bio: data.about.bio.split(/\n\s*\n/).filter(Boolean) }
   return (
     <section
       id="about"

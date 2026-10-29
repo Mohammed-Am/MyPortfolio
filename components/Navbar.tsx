@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { usePortfolio } from './PortfolioProvider'
 import { Exo_2 } from 'next/font/google'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -18,6 +18,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const { profile, sections } = usePortfolio()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -38,13 +39,13 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center group transition-transform">
           <span className={`${exo2.className} text-lg sm:text-xl md:text-xl italic font-bold tracking-wider text-gray-900 dark:text-white group-hover:text-emerald-500 transition-colors`}>
-            Mohammed
+            {profile.brand}
           </span>
         </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {navLinks.filter(link => link.href === 'hero' || sections[link.href as keyof typeof sections]).map((link) => (
             <a
               key={link.href}
               href={`#${link.href}`}
@@ -60,8 +61,8 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, 'contact')}
+            href={sections.contact ? "#contact" : `mailto:${profile.email}`}
+            onClick={(e) => sections.contact && scrollTo(e, 'contact')}
             className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold rounded-lg transition-all hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
           >
             Contact Me
@@ -72,8 +73,8 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-2">
           <ThemeToggle />
           <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, 'contact')}
+            href={sections.contact ? "#contact" : `mailto:${profile.email}`}
+            onClick={(e) => sections.contact && scrollTo(e, 'contact')}
             className="flex items-center gap-1.5 px-3 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold rounded-lg transition-all"
           >
             Contact
@@ -99,7 +100,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-slate-50 dark:bg-[#0D0D0D] border-t border-gray-200 dark:border-white/5 px-4 py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
+          {navLinks.filter(link => link.href === 'hero' || sections[link.href as keyof typeof sections]).map((link) => (
             <a
               key={link.href}
               href={`#${link.href}`}
@@ -111,8 +112,8 @@ export default function Navbar() {
           ))}
           <div className="mt-2 flex items-center justify-between">
             <a
-              href="#contact"
-              onClick={(e) => { scrollTo(e, 'contact'); setMobileOpen(false) }}
+              href={sections.contact ? "#contact" : `mailto:${profile.email}`}
+              onClick={(e) => { sections.contact && scrollTo(e, 'contact'); setMobileOpen(false) }}
               className="flex-1 px-4 py-2.5 bg-emerald-500 text-black text-sm font-semibold rounded-lg text-center"
             >
               Contact Me
