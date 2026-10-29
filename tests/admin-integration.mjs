@@ -12,6 +12,7 @@ let stored = null
 let messages = []
 let rateAllowed = true
 let dbAvailable = true
+let rateFailure = ''
 const revoked = new Set()
 const server = http.createServer(async (req, res) => {
   const chunks = []; for await (const chunk of req) chunks.push(chunk)
@@ -25,7 +26,12 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname === '/auth/v1/token') return body.password === 'fixture-password' ? send({ access_token: body.email === 'owner@example.test' ? 'owner-token' : 'other-token', expires_in: 3600, user: { id: body.email === 'owner@example.test' ? 'owner-id' : 'other-id' } }) : send({}, 400)
   if (url.pathname === '/auth/v1/user') return req.headers.authorization === 'Bearer owner-token' && !revoked.has('owner-token') ? send({ id: 'owner-id' }) : send({}, 401)
   if (url.pathname === '/auth/v1/logout') { revoked.add('owner-token'); return send({}) }
-  if (url.pathname === '/rest/v1/rpc/portfolio_rate_limit') return send(rateAllowed)
+  if (url.pathname === '/rest/v1/rpc/portfolio_rate_limit') {
+    if (rateFailure === 'network') return res.destroy()
+    if (rateFailure === 'html') { res.writeHead(200, { 'Content-Type': 'text/html' }); return res.end('<html>Wrong project URL</html>') }
+    if (rateFailure) return send({}, Number(rateFailure))
+    return send(rateAllowed)
+  }
   if (url.pathname === '/rest/v1/portfolio_content') return send(stored ? [stored] : [])
   if (url.pathname === '/rest/v1/rpc/save_portfolio_content') {
     if (body.expected_revision !== (stored?.revision || 0)) return send(-1)
@@ -40,7 +46,7 @@ const server = http.createServer(async (req, res) => {
 })
 await new Promise(resolve => server.listen(dbPort, '127.0.0.1', resolve))
 const child = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'start', '-p', String(port)], {
-  cwd: process.cwd(), env: { ...process.env, APP_URL: origin, SUPABASE_URL: `http://127.0.0.1:${dbPort}`, SUPABASE_ANON_KEY: 'fixture-anon', SUPABASE_SERVICE_ROLE_KEY: 'fixture-server', ADMIN_USER_ID: 'owner-id' }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
+  cwd: process.cwd(), env: { ...process.env, APP_URL: ` "${origin}" `, SUPABASE_URL: ` "http://127.0.0.1:${dbPort}/" `, SUPABASE_ANON_KEY: ' fixture-anon ', SUPABASE_SERVICE_ROLE_KEY: ' fixture-server ', ADMIN_USER_ID: ' owner-id ' }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
 })
 child.stdout.on('data', () => {})
 child.stderr.on('data', () => {})
@@ -61,6 +67,13 @@ try {
   assert.equal((await request('/api/admin/login', 'POST', {}, false, 'https://evil.example')).status, 403)
   assert.equal((await request('/api/admin/login', 'POST', { email: 'other@example.test', password: 'fixture-password' })).status, 401)
   assert.equal((await request('/api/admin/login', 'POST', { email: 'owner@example.test', password: 'wrong' })).status, 401)
+  for (const [mode, expected] of [['401', 'server key'], ['404', 'database setup is missing'], ['html', 'unexpected response'], ['network', 'could not connect']]) {
+    rateFailure = mode
+    const response = await request('/api/admin/login', 'POST', { email: 'owner@example.test', password: 'fixture-password' })
+    assert.equal(response.status, 503)
+    assert.ok((await response.json()).error.includes(expected), `Actionable error for ${mode}`)
+  }
+  rateFailure = ''
   const login = await request('/api/admin/login', 'POST', { email: 'owner@example.test', password: 'fixture-password' })
   assert.equal(login.status, 200)
   const setCookie = login.headers.get('set-cookie')

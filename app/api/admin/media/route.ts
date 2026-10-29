@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto'
-import { apiError, HttpError, rateLimit, requireAdmin, sameOrigin, supabase } from '@/lib/admin-server'
+import { apiError, HttpError, rateLimit, requireAdmin, sameOrigin, supabase, supabaseUrl } from '@/lib/admin-server'
 import { MAX_MEDIA_BYTES, mediaType } from '@/lib/media'
 export const runtime = 'nodejs'
 export async function POST(request: Request) {
@@ -23,6 +23,6 @@ export async function POST(request: Request) {
     const path = `${randomUUID()}.${type.extension}`
     const response = await supabase(`/storage/v1/object/portfolio-media/${path}`, { method: 'POST', headers: { 'Content-Type': type.mime, 'Cache-Control': '3600', 'x-upsert': 'false' }, body: bytes })
     if (!response.ok) throw new HttpError(503, 'Upload failed. Check that the portfolio-media bucket exists, then try again.')
-    return Response.json({ url: `${process.env.SUPABASE_URL}/storage/v1/object/public/portfolio-media/${path}`, type: type.mime })
+    return Response.json({ url: `${supabaseUrl()}/storage/v1/object/public/portfolio-media/${path}`, type: type.mime })
   } catch (error) { return apiError(error) }
 }
