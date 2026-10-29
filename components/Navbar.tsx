@@ -13,6 +13,7 @@ const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
 
 const navLinks = [
   { href: 'hero', label: 'About' },
+  { href: 'projects', label: 'Projects' },
   { href: 'services', label: 'Services' },
 ]
 

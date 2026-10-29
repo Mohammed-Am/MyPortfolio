@@ -10,6 +10,7 @@ const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
 
 const footerLinks = [
   { href: 'about', label: 'About' },
+  { href: 'projects', label: 'Projects' },
   { href: 'services', label: 'Services' },
   { href: 'contact', label: 'Contact' },
 ]
